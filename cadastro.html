@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- FIVEICON -->
+    <link rel="shortcut icon" href="img/apple-icon-57x57.png"/>
+
+    <!--CSS-->
+    <link rel="stylesheet" href="css/style_cad.css">
+    <!--  ANIMAÇÃO
+    https://michalsnik.github.io/aos/    
+    -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!--BS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+   
+    <!--FONT-->
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Cadastro RT</title>
+</head>
+<body style="background-image: url(img/Endless-Constellation_cad.svg);">
+
+<main>
+    <main>
+        <center>
+        <div id="container-forms" data-aos="zoom-in">
+            <form id="contact-form" class="form"  action="" method="POST">
+                <h1 class="titulos-login text-center"><b>Efetuar cadastro:</b></h1>
+                <div class="forms">
+                    <div class="form-group">
+                        <label class="form-label" for="name"><b>Nome:</b></label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Digite seu nome aqui" required>
+                    </div>                            
+                    <div class="form-group">
+                        <label class="form-label" for="email"><b>Data de nascimento:</b></label>
+                        <input type="date" class="form-control" id="email" name="email" required>
+                    </div>        
+                    <div class="form-group">
+                        <label class="form-label" for="name"><b>CPF:</b></label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="000.000.000-00" required>
+                    </div>               
+                    <div class="form-group">
+                        <label class="form-label" for="name"><b>Telefone:</b></label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="(00)0000-0000" required>
+                    </div>  
+                    <div class="form-group">
+                        <label class="form-label" for="name"><b>Email:</b></label>
+                        <input type="email" class="form-control" id="name" name="name" placeholder="Digite o seu email aqui" required>
+                    </div>            
+                    <div class="form-group">
+                        <label class="form-label" for="name"><b>Username:</b></label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Digite seu usuário aqui" required>
+                    </div> 
+                    <div class="form-group">
+                        <label class="form-label" for="email"><b>Senha:</b></label>
+                        <input type="password" class="form-control" id="email" name="passwor" placeholder="Digite sua senha aqui"required>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-start-order" id="btn-form" value="send"><b>ENVIAR </b><div class="spinner-grow text-dark" role="status" style="margin-bottom:5px;margin-left:5px;width: 16px; height: 16px;">
+                        </div></button>
+                    </div>
+                </div>
+            </form>
+           </div>
+           </center>
+    </main>
+</main>
+
+<!--  ANIMAÇÃO
+https://michalsnik.github.io/aos/    
+-->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+  </script>
+
+</body>
+</html>
