@@ -1,0 +1,15 @@
+/*----- RESET ----- */
+*{border:none; outline:none; font-family: 'PT Sans', sans-serif;margin: 0px;}
+
+header{display: flex;height:80px;padding-top: 25px;padding-left: 7px;color:white;}
+header div{flex:1;}
+
+main{background-color: black;color:white;text-align: center;margin-top: 50px;height: 600px;}
+
+section{height:500px;margin-top: 80px;}
+.titulo-rank{color:white;font-size:32px;}
+.hr{background-color: #ff5e57;width: 120px;height: 3px;}
+.rank{background-color: black;color:white;text-align: center;height:350px;margin-top:80px;}
+
+footer{display:flex;background-color: white;margin-top: 80px;height:50px;padding-top:20px;}
+footer div{flex:1;text-align: center;font-size: 18px;color:#ff5e57;}

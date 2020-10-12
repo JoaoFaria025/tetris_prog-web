@@ -1,4 +1,5 @@
-
+/*----- RESET ----- */
+*{ border:none; outline:none; font-family: 'PT Sans', sans-serif;margin: 0px;}
 
 /* titulos*/
 .titulos-login{font-size: 30px;padding: 20px;}
