@@ -4,7 +4,9 @@
 header{display: flex;height:80px;padding-top: 25px;padding-left: 7px;color:white;}
 header div{flex:1;}
 
-main{background-color: black;color:white;text-align: center;margin-top: 50px;height: 600px;}
+main{background-color: black;color:white;text-align: center;margin-top: 50px;height: 700px;}
+#img-tetris-rt{height:500px; margin-top: 80px}
+
 
 section{height:500px;margin-top: 80px;}
 .titulo-rank{color:white;font-size:32px;}
