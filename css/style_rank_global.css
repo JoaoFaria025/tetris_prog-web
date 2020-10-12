@@ -1,0 +1,11 @@
+/*----- RESET ----- */
+*{ border:none; outline:none; font-family: 'PT Sans', sans-serif;margin: 0px;}
+
+
+main{background-color: white;color:black;text-align: center;margin-top: 80px;height: 700px; margin-left: auto; margin-right: auto;}
+#titulo_rank{padding: 20px;}
+.posicao_atual{color:white; font-weight: bold   ;}
+
+footer{background-color: white;margin-top: 80px;height:50px;padding-top:20px;}
+
+footer div{text-align: center;font-size: 18px;color:#ff5e57;}
