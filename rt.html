@@ -26,7 +26,7 @@
 </head>
 <body style="background-image: url(img/Endless-Constellation.svg);">
 
-<header>
+<header style="height:300px">
     <div class="box-1">
         <h2>TEMPO DE PARTIDA: 00:50</h2>
     </div>
@@ -40,6 +40,28 @@
         <h2>NÍVEL DE DIFICULDADE: FÁCIL</h2>
     </div>
 </header>
+<nav class="navbar navbar-expand-lg navbar-dark bg-white fixed-top" >
+    <a class="navbar-brand text-dark " href="#">
+        <img src="img/2726p.ico" width="50" height="50" class="rounded mx-au d-inline" alt="">
+        Universidade Estadual de Campinas
+    </a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active border-bottom border-danger ml-3">
+          <a class="nav-link font-weight-bold text-dark" href="#">Rolling Tetris <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active  ml-3">
+            <a class="nav-link font-weight-bold text-dark" href="ranking_global.html">Ranking Global <span class="sr-only">(current)</span></a>
+          </li>
+        <li class="nav-item active ml-3">
+          <a class="nav-link font-weight-bold text-dark" href="#myModal" data-toggle="modal" data-target="#myModal">Editar informações pessoais </a>
+        </li>
+        <li class="nav-item active ml-3">
+          <a class="nav-link font-weight-bold text-dark" href="#sair_modal" data-toggle="modal" data-target="#sair_modal">Sair</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 <main>
     <h1>GAME</h1>
     <img src="img/1200px-Typical_Tetris_Game.svg.png" alt="" id ="img-tetris-rt" >
@@ -56,19 +78,11 @@
     </div>
 </section>
 <footer>
-    <div class="box-1">
-        <h2>DECONECTAR-SE</h2>
-    </div>
-    <div class="box-2">
-        <h2>RANKING GLOBAL</h2>
-    </div>
 
-    <div class="box-3">
-        <div class="text-center">
-          <button  type="button" class="btn-editar" id="btn-form" value="send" data-toggle="modal" data-target="#myModal"><b>EDITAR PERFIL </b></button>
-      </div>
-        <!-- Modal -->
-    <div class="modal fade" id="myModal" role="dialog">
+    <h3 style="text-align: center;">FAZER O FOOOOOOOOOOOOOOOOOOOTER</h3>
+</footer>
+     <!-- Modal -->
+     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
@@ -121,7 +135,22 @@
             </div>
         </div>
     </div>
-</footer>
-
+     <!-- Modal SAIR -->
+     <div class="modal fade" id="sair_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Deseja sair?</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-danger">Confirmar</button>
+            </div>
+          </div>
+        </div>
+      </div>
 </body>
 </html>
