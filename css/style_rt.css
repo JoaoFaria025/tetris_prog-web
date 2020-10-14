@@ -15,3 +15,16 @@ section{height:500px;margin-top: 80px;}
 
 footer{display:flex;background-color: white;margin-top: 80px;height:50px;padding-top:20px;}
 footer div{flex:1;text-align: center;font-size: 18px;color:#ff5e57;}
+
+/*----- Modal -----*/
+/*----- RESET ----- */
+*{ border:none; outline:none; font-family: 'PT Sans', sans-serif;margin: 0px;}
+
+.titulo{font-size: 30px;padding: 20px;color: black;text-align: center;}
+
+#container-forms{background-color: white;border-radius: 33px; width: 600px;height: 880px;margin-top: 7em;margin-left: auto; margin-right: auto;}
+.forms{padding: 50px;padding-top: 0px;}
+#contato{height: 700px;margin-bottom: 0px; margin-top: 0px;}
+#title-forms{color:white;}
+#texto-contato{margin-top: 100px; margin-left: 100px;}
+.form-label {font-size: 18px;color: black;float:left;}
