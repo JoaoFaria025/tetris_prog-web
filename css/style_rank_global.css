@@ -1,6 +1,10 @@
 /*----- RESET ----- */
 *{ border:none; outline:none; font-family: 'PT Sans', sans-serif;margin: 0px;}
 
+/* NAV */
+.menu{font-size:20px;color: white; letter-spacing: 0.5px;font-weight: 600;margin-left: 20px;margin-top:9px;}
+.menu:hover{font-size:20px;color:#ff5e57; letter-spacing: 0.5px;font-weight: 600;}
+#edit{background-color: black;}
 
 main{background-color: white;color:black;text-align: center;margin-top: 80px;height: 700px; margin-left: auto; margin-right: auto;}
 #titulo_rank{padding: 20px;}
