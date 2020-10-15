@@ -21,7 +21,24 @@
 </head>
 <body style="background-image: url(img/Endless-Constellation.svg);">
 
-<!--NAVBAR-->
+   <!--NAV -->
+   <nav class="navbar navbar-expand-lg " id="edit">
+    <div class="container">
+        <a class="navbar-brand h1 mb-0" href="#"><img src="img/unicamp logo.png" style="width: 50px;"></a>
+        <button class="navbar-toggler navbar-light bg-light" type="button" data-toggle="collapse" data-target="#navbarSite">
+                <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse" id="navbarSite">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link active menu" href="">Rolling Tetris</a></li>
+            <li class="nav-item"><a class="nav-link active menu"  href="ranking_global.html">Ranking Global</a></li>
+            <li class="nav-item"><a class="nav-link active menu"  href="#myModal" data-toggle="modal" data-target="#myModal">Editar Perfil</a></li>
+            <li class="nav-item"><a class="nav-link active menu" href="#sair_modal" data-toggle="modal" data-target="#sair_modal">Sair</a></li>
+        </ul>
+    </div>
+    </div>
+  </nav>
+<!--NAVBAR
 <nav class="navbar navbar-expand-lg navbar-dark bg-white fixed-top" >
     <a class="navbar-brand text-dark" href="#">
         <img src="img/2726p.ico" width="50" height="50" class="rounded mx-auto d-inline" alt="">
@@ -43,47 +60,44 @@
       </ul>
     </div>
   </nav>
-
+!-->
   <!--SCORE JOGADOR-->
   <header>
     <div class="row">
         <div class="col">
-            <h3>TEMPO DE PARTIDA: 00:50</h3>
+            <span class="score-info">TEMPO DE PARTIDA:</span><span class="score-info-2">00:50</span>
         </div>
         <div class="col">
-            <h3>SCORE: 20</h3>
+            <span class="score-info">SCORE:</span><span class="score-info-2">50</span>
         </div>
         <div class="col">
-            <h3>Nº LINHAS ELIMINADAS: 30</h3>
+            <span class="score-info">Nº LINHAS ELIMINADAS:</span><span class="score-info-2">05</span>
         </div>
         <div class="col">
-            <h3>NÍVEL DE DIFICULDADE: FÁCIL</h3>
+            <span class="score-info">NÍVEL DE DIFICULDADE:</span><span class="score-info-2">MÉDIO</span>
         </div>
     </div>
    </header>
 
 <!--GAME-->
   <main>
-    <h1>GAME</h1>
     <img src="img/1200px-Typical_Tetris_Game.svg.png" alt="" id ="img-tetris-rt" >
   </main>
 
 <!--RANKING JOGADOR-->
   <section>
-    <div class="titulo-rank">
-        <center>
+    <div class="titulo-rank text-center">
         <h1 class="titulos"><b>RANKING</b></h1>
         <hr class="hr">
-        </center>
     </div>
     <div class="rank">
-        <h1>RANK</h1>
+        <h1>Colocar tabela @corsi</h1>
     </div>
   </section>
 
 <!--INFO-BOOSTRAP-->
 <footer>
-    <div class="text-center">Utilizou-se do Bootstrap como frameword de desenvolvimento</div>
+    <div class="text-center">Utilizou-se do Bootstrap como framework de desenvolvimento</div>
 </footer>
 
      <!-- Modal -->

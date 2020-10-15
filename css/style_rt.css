@@ -6,7 +6,16 @@ header{background-color: antiquewhite;}
 main{background-color: aquamarine;}
 section{background-color: blueviolet;}
 /**/
-header{height:250px;padding-top: 155px;padding-left: 7px;color:white;}
+
+/* NAV */
+.menu{font-size:20px;color: black; letter-spacing: 0.5px;font-weight: 600;margin-left: 20px;margin-top:9px;}
+.menu:hover{font-size:20px;color:#ff5e57; letter-spacing: 0.5px;font-weight: 600;}
+#edit{background-color: white;}
+
+
+header{height:180px;padding-top: 105px;padding-left: 7px;color:white;}
+.score-info-2{color:black;font-weight: 600;background-color: white;border-radius: 5px;font-size: 22px;padding:8px;}
+.score-info{color:#ff5e57;font-weight: 600;background-color: black;border-radius: 5px;font-size: 22px;padding:8px;} 
 
 main{background-color:black;color:white;text-align: center;margin-top: 50px;height: 700px;}
 #img-tetris-rt{height:500px; margin-top: 100px}
@@ -14,11 +23,11 @@ main{background-color:black;color:white;text-align: center;margin-top: 50px;heig
 
 section{height:500px;margin-top: 100px;}
 .titulo-rank{color:white;font-size:32px;}
-.hr{background-color: #ff5e57;width: 120px;height: 3px;}
+.hr{background-color: #ff5e57;width: 120px;height: 3px;margin: auto;}
 .rank{background-color:black;color:white;text-align: center;height:350px;margin-top:80px;}
 
-footer{background-color: white;height:35px;margin-top: 100px;}
-footer div{padding-top: 10px;font-weight: bold;}
+footer{background-color: white;height:30px;margin-top: 100px;}
+footer div{padding-top: 5px;font-weight: bold;}
 
 
 .titulo{font-size: 30px;padding: 20px;color: black;text-align: center;}
