@@ -1,27 +1,27 @@
 /*----- RESET ----- */
 *{border:none; outline:none; font-family: 'PT Sans', sans-serif;margin: 0px;}
 
-header{display: flex;height:80px;padding-top: 25px;padding-left: 7px;color:white;}
-header div{flex:1;}
+/*LAYOUT
+header{background-color: antiquewhite;}
+main{background-color: aquamarine;}
+section{background-color: blueviolet;}
+/**/
+header{height:250px;padding-top: 155px;padding-left: 7px;color:white;}
 
-main{background-color: black;color:white;text-align: center;margin-top: 50px;height: 700px;}
-#img-tetris-rt{height:500px; margin-top: 80px}
+main{background-color:black;color:white;text-align: center;margin-top: 50px;height: 700px;}
+#img-tetris-rt{height:500px; margin-top: 100px}
 
 
-section{height:500px;margin-top: 80px;}
+section{height:500px;margin-top: 100px;}
 .titulo-rank{color:white;font-size:32px;}
 .hr{background-color: #ff5e57;width: 120px;height: 3px;}
-.rank{background-color: black;color:white;text-align: center;height:350px;margin-top:80px;}
+.rank{background-color:black;color:white;text-align: center;height:350px;margin-top:80px;}
 
-footer{display:flex;background-color: white;margin-top: 80px;height:50px;padding-top:20px;}
-footer div{flex:1;text-align: center;font-size: 18px;color:#ff5e57;}
+footer{background-color: white;height:35px;margin-top: 100px;}
+footer div{padding-top: 10px;font-weight: bold;}
 
-/*----- Modal -----*/
-/*----- RESET ----- */
-*{ border:none; outline:none; font-family: 'PT Sans', sans-serif;margin: 0px;}
 
 .titulo{font-size: 30px;padding: 20px;color: black;text-align: center;}
-
 #container-forms{background-color: white;border-radius: 33px; width: 600px;height: 880px;margin-top: 7em;margin-left: auto; margin-right: auto;}
 .forms{padding: 50px;padding-top: 0px;}
 #contato{height: 700px;margin-bottom: 0px; margin-top: 0px;}

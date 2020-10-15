@@ -16,34 +16,15 @@
    
     <!--FONT-->
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
-  
-  <!--Ajax, Jquery, Js-->
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
     <title>Rooling Tetris</title>
 </head>
 <body style="background-image: url(img/Endless-Constellation.svg);">
 
-<header style="height:300px">
-    <div class="box-1">
-        <h2>TEMPO DE PARTIDA: 00:50</h2>
-    </div>
-    <div class="box-2">
-        <h2>SCORE: 20</h2>
-    </div>
-    <div class="box-3">
-        <h2>Nº LINHAS ELIMINADAS: 30</h2>
-    </div>
-    <div class="box-4">
-        <h2>NÍVEL DE DIFICULDADE: FÁCIL</h2>
-    </div>
-</header>
+<!--NAVBAR-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-white fixed-top" >
-    <a class="navbar-brand text-dark " href="#">
-        <img src="img/2726p.ico" width="50" height="50" class="rounded mx-au d-inline" alt="">
-        Universidade Estadual de Campinas
+    <a class="navbar-brand text-dark" href="#">
+        <img src="img/2726p.ico" width="50" height="50" class="rounded mx-auto d-inline" alt="">
     </a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
@@ -62,11 +43,33 @@
       </ul>
     </div>
   </nav>
-<main>
+
+  <!--SCORE JOGADOR-->
+  <header>
+    <div class="row">
+        <div class="col">
+            <h3>TEMPO DE PARTIDA: 00:50</h3>
+        </div>
+        <div class="col">
+            <h3>SCORE: 20</h3>
+        </div>
+        <div class="col">
+            <h3>Nº LINHAS ELIMINADAS: 30</h3>
+        </div>
+        <div class="col">
+            <h3>NÍVEL DE DIFICULDADE: FÁCIL</h3>
+        </div>
+    </div>
+   </header>
+
+<!--GAME-->
+  <main>
     <h1>GAME</h1>
     <img src="img/1200px-Typical_Tetris_Game.svg.png" alt="" id ="img-tetris-rt" >
-</main>
-<section>
+  </main>
+
+<!--RANKING JOGADOR-->
+  <section>
     <div class="titulo-rank">
         <center>
         <h1 class="titulos"><b>RANKING</b></h1>
@@ -76,11 +79,13 @@
     <div class="rank">
         <h1>RANK</h1>
     </div>
-</section>
-<footer>
+  </section>
 
-    <h3 style="text-align: center;">FAZER O FOOOOOOOOOOOOOOOOOOOTER</h3>
+<!--INFO-BOOSTRAP-->
+<footer>
+    <div class="text-center">Utilizou-se do Bootstrap como frameword de desenvolvimento</div>
 </footer>
+
      <!-- Modal -->
      <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
@@ -95,7 +100,7 @@
                             </div>                            
                             <div class="form-group">
                                 <label class="form-label" for="email"><b>Data de nascimento:</b></label>
-                                <input readonly=“true” type="date" class="form-control" id="email" name="email" placeholder="Não é possível alterar este campo" required>
+                                <input readonly=“true” type="text" class="form-control" id="email" name="email" placeholder="Não é possível alterar este campo" required>
                             </div>        
                             <div class="form-group">
                                 <label class="form-label" for="name"><b>CPF:</b></label>
@@ -118,14 +123,9 @@
                                 <input type="password" class="form-control" id="email" name="passwor" placeholder="Digite sua senha aqui"required>
                             </div>
                             <div class="text-center">
-                                <button  type="submit" class="btn btn-success" id="btn-form" value="send"><b>Salvar </b>
-                                    <div class="spinner-grow text-dark" role="status" style="margin-bottom:5px;margin-left:5px;width: 16px; height: 16px;">
-                                    </div>
-                                </button>
+                                <button  type="submit" class="btn btn-success" id="btn-form" value="send" style="margin:5px;"><b>Salvar</b>
                                 <button  type="submit" class="btn btn-danger" id="btn-form" value="send" data-dismiss="modal"><b>Cancelar </b>
-                                    <div class="spinner-grow text-dark" role="status" style="margin-bottom:5px;margin-left:5px;width: 16px; height: 16px;">
-                                    </div>
-                                </button>
+                            </div>
                             </div>
                         </div>
                     </form>
@@ -151,4 +151,9 @@
         </div>
       </div>
 </body>
+  <!--Ajax, Jquery, Js-->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
 </html>
