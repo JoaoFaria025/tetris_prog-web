@@ -37,6 +37,7 @@ footer div{padding-top: 5px;font-weight: bold;}
 #texto-contato{margin-top: 100px; margin-left: 100px;}
 .form-label {font-size: 18px;color: black;float:left;}
 
+
 /*MEDIA QUERIES*/
 @media screen and (max-width:1409px){
     .score-info-2{color:black;font-weight: 600;background-color: white;border-radius: 5px;font-size: 19px;padding:8px;}
@@ -46,3 +47,4 @@ footer div{padding-top: 5px;font-weight: bold;}
     .score-info{color:#ff5e57;font-weight: 600;background-color: black;border-radius: 5px;font-size: 19px;padding:8px;} 
     #conj-score{margin-bottom: 2em;}
 }   
+
