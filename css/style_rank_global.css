@@ -6,10 +6,11 @@
 .menu:hover{font-size:20px;color:#ff5e57; letter-spacing: 0.5px;font-weight: 600;}
 #edit{background-color: black;}
 
-main{background-color: white;color:black;text-align: center;margin-top: 80px;height: 700px; margin-left: auto; margin-right: auto;}
+main{background-color: none;color:black;text-align: center;margin-top: 80px;height: 700px; margin-left: auto; margin-right: auto;}
 #titulo_rank{padding: 20px;}
-.posicao_atual{color:white; font-weight: bold   ;}
+.posicao_atual{color:white; font-weight: bold;}
+.titulo-rank{color:white;font-size:32px;}
+.hr{background-color: #ff5e57;width: 120px;height: 3px;margin: auto;}
 
-footer{background-color: white;margin-top: 80px;height:50px;padding-top:20px;}
+table{background-color: white;margin-top:50px;}
 
-footer div{text-align: center;font-size: 18px;color:#ff5e57;}
