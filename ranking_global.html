@@ -1,143 +1,155 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- FIVEICON -->
-    <link rel="shortcut icon" href="img/apple-icon-57x57.png"/>
+  <!-- FIVEICON -->
+  <link rel="shortcut icon" href="img/2726p.ico" />
 
-    <!--CSS-->
-    <link rel="stylesheet" href="css/style_rank_global.css">
+  <!--CSS-->
+  <link rel="stylesheet" href="css/style_rank_global.css">
 
-    <!--BS-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-   
-    <!--FONT-->
-    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <!--BS-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-    <title>Ranking Global</title>
+  <!--FONT-->
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+  <title>Ranking Global</title>
 </head>
+
 <body style="background-image: url(img/Endless-Constellation.svg);">
-     <!--NAV -->
-     <nav class="navbar navbar-expand-lg " id="edit">
-      <div class="container">
-          <a class="navbar-brand h1 mb-0" href="rt.html"><img src="img/unicamp-logo.png" style="width: 250px;"></a>
-          <button class="navbar-toggler navbar-light bg-light" type="button" data-toggle="collapse" data-target="#navbarSite">
-                  <span class="navbar-toggler-icon"></span>
-          </button>
+  <!--NAV -->
+  <nav class="navbar navbar-expand-lg " id="edit">
+    <div class="container">
+      <a class="navbar-brand h1 mb-0" href="rt.html"><img src="img/unicamp-logo.png" style="width: 250px;"></a>
+      <button class="navbar-toggler navbar-light bg-light" type="button" data-toggle="collapse"
+        data-target="#navbarSite">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <div class="collapse navbar-collapse" id="navbarSite">
-          <ul class="navbar-nav ml-auto">
-              <li class="nav-item"><a class="nav-link active menu" href="rt.html">Rolling Tetris</a></li>
-              <li class="nav-item"><a class="nav-link active menu"  href="#" style="color:#ff5e57;">Ranking Global</a></li>
-              <li class="nav-item"><a class="nav-link active menu" href="#sair_modal" data-toggle="modal" data-target="#sair_modal">Sair</a></li>
-          </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link active menu" href="rt.html">Rolling Tetris</a></li>
+          <li class="nav-item"><a class="nav-link active menu" href="#" style="color:#ff5e57;">Ranking Global</a></li>
+          <li class="nav-item"><a class="nav-link active menu" href="#sair_modal" data-toggle="modal"
+              data-target="#sair_modal">Sair</a></li>
+        </ul>
       </div>
-      </div>
-    </nav>
-<main>
+    </div>
+  </nav>
+  <main>
     <div class="titulo-rank text-center">
       <h1 class="titulos"><b>RANKING</b></h1>
       <hr class="hr">
     </div>
-    <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Posição</th>
-            <th scope="col">Usuário</th>
-            <th scope="col">Pontuação</th>
-            <th scope="col">Nível Máximo atingido</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>joão</td>
-            <td>10</td>
-            <td>10</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>joão</td>
-            <td>10</td>
-            <td>10</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>joão</td>
-            <td>10</td>
-            <td>10</td>
-          </tr>
-          <tr>
-            <th scope="row">4</th>
-            <td>joão</td>
-            <td>10</td>
-            <td>10</td>
-          </tr>
-          <tr>
-            <th scope="row">5</th>
-            <td>joão</td>
-            <td>10</td>
-            <td>10</td>
-          </tr>
-          <tr>
-            <th scope="row">6</th>
-            <td>joão</td>
-            <td>10</td>
-            <td>10</td>
-          </tr>
-          <tr>
-            <th scope="row">7</th>
-            <td>joão</td>
-            <td>10</td>
-            <td>10</td>
-          </tr>
-          <tr>
-            <th scope="row">8</th>
-            <td>joão</td>
-            <td>10</td>
-            <td>10</td>
-          </tr>
-          <tr>
-            <th scope="row">9</th>
-            <td>joão</td>
-            <td>10</td>
-            <td>10</td>
-          </tr>
-          <tr>
-            <th scope="row">10</th>
-            <td>joão</td>
-            <td>10</td>
-            <td>10</td>
-          </tr>
-          <tr class="bg-dark">
-            <td scope="row" class="posicao_atual">Sua posição atual no Ranking:</td>
-            <td colspan="3" class="posicao_atual">40</td>
-          </tr>
-        </tbody>
-    </table> 
-</main>
-     <!-- Modal SAIR -->
-     <div class="modal fade" id="sair_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Deseja sair?</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-danger">Confirmar</button>
-          </div>
+    <table class="table bg-dark" id="table_rank">
+      <thead>
+        <tr>
+          <th scope="col">Posição</th>
+          <th scope="col">Usuário</th>
+          <th scope="col">Pontuação</th>
+          <th scope="col">Nível Máximo atingido</th>
+        </tr>
+      </thead>
+      <tbody class="text-white">
+        <tr>
+          <th scope="row">1</th>
+          <td>joão</td>
+          <td>10</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>joão</td>
+          <td>10</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>joão</td>
+          <td>10</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <th scope="row">4</th>
+          <td>joão</td>
+          <td>10</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <th scope="row">5</th>
+          <td>joão</td>
+          <td>10</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <th scope="row">6</th>
+          <td>joão</td>
+          <td>10</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <th scope="row">7</th>
+          <td>joão</td>
+          <td>10</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <th scope="row">8</th>
+          <td>joão</td>
+          <td>10</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <th scope="row">9</th>
+          <td>joão</td>
+          <td>10</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <th scope="row">10</th>
+          <td>joão</td>
+          <td>10</td>
+          <td>10</td>
+        </tr>
+        <tr class="bg-dark">
+          <td scope="row" class="posicao_atual">Sua posição atual no Ranking:</td>
+          <td colspan="3" class="posicao_atual">40</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+  <footer class="bg-dark text-white">
+    <div class="text-center">Utilizou-se do Bootstrap como framework de desenvolvimento</div>
+  </footer>
+  <!-- Modal SAIR -->
+  <div class="modal fade" id="sair_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Deseja sair?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-danger">Confirmar</button>
         </div>
       </div>
     </div>
+  </div>
 
 </body>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+  integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+  integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 </html>

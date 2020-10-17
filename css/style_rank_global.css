@@ -14,3 +14,8 @@ main{background-color: none;color:black;text-align: center;margin-top: 80px;heig
 
 table{background-color: white;margin-top:50px;}
 
+#table_rank{color:#ff5e57; font-weight: bold; letter-spacing: 1px; font-size:20px;}
+
+footer{height:50px;margin-top: 120px;}
+footer div{padding-top: 15px;font-weight: bold;}
+
