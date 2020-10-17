@@ -20,13 +20,15 @@ main{background-color:black;color:white;text-align: center;margin-top: 50px;heig
 #img-tetris-rt{height:500px; margin-top: 100px}
 
 
-section{height:500px;margin-top: 100px;}
+section{margin-top: 100px;}
 .titulo-rank{color:white;font-size:32px;}
-.hr{background-color: #ff5e57;width: 120px;height: 3px;margin: auto;}
-.rank{background-color:black;color:white;text-align: center;height:350px;margin-top:80px;}
+.hr{background-color: #ff5e57;width: 300px;height: 3px;margin: auto;}
+.rank{margin-top:80px;}
+#table_rank{color:#ff5e57; font-weight: bold; text-align: center; letter-spacing: 1px;font-size:20px;}
 
-footer{background-color: white;height:30px;margin-top: 100px;}
-footer div{padding-top: 5px;font-weight: bold;}
+
+footer{height:50px;margin-top: 100px;}
+footer div{padding-top: 15px;font-weight: bold;}
 
 
 .titulo{font-size: 30px;padding: 20px;color: black;text-align: center;}
