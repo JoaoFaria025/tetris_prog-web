@@ -36,7 +36,9 @@ footer div{padding-top: 15px;font-weight: bold;}
 .form-label {font-size: 18px;color: black;float:left;}
 
 
-/*MEDIA QUERIES*/
+/*MEDIA QUERIES
+os medias criados servem para evitar que o score do jogador quebre ao diminuir a resolução da tela em um desktop
+*/
 @media screen and (max-width:1409px){
     .score-info-2{color:black;font-weight: 600;background-color: white;border-radius: 5px;font-size: 19px;padding:8px;}
     .score-info{color:#ff5e57;font-weight: 600;background-color: black;border-radius: 5px;font-size: 19px;padding:8px;} 
