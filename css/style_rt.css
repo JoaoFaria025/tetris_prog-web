@@ -45,6 +45,6 @@ os medias criados servem para evitar que o score do jogador quebre ao diminuir a
 }
 @media screen and (max-width:1230px){
     .score-info{color:#ff5e57;font-weight: 600;background-color: black;border-radius: 5px;font-size: 19px;padding:8px;} 
-    #conj-score{margin-bottom: 2em;}
+    .conjss-score{margin-bottom: 2em;}
 }   
 

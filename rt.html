@@ -19,6 +19,17 @@
     <!--FONT-->
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
 
+    <!--Ajax, Jquery, Js-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+        integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous">
+    </script>
+
     <title>Rooling Tetris</title>
 </head>
 
@@ -27,7 +38,7 @@
     <!--NAV -->
     <nav class="navbar navbar-expand-lg " id="edit">
         <div class="container">
-            <a class="navbar-brand h1 mb-0" href="#"><img src="img/unicamp-logo.png" style="width: 250px;"></a>
+            <a class="navbar-brand h1 mb-0" href="#"><img src="img/unicamp-logo.png" alt="Unicamp logo" style="width: 250px;"></a>
             <button class="navbar-toggler navbar-light bg-light" type="button" data-toggle="collapse"
                 data-target="#navbarSite">
                 <span class="navbar-toggler-icon"></span>
@@ -50,10 +61,10 @@
     <!--SCORE JOGADOR-->
     <header>
         <div class="row">
-            <div class="col-xl-3 col-lg-6 col-sm-6 col-6" id="conj-score">
+            <div class="col-xl-3 col-lg-6 col-sm-6 col-6 conjss-score" >
                 <span class="score-info">TEMPO DE PARTIDA:</span><span class="score-info-2">00:50</span>
             </div>
-            <div class="col-xl-2 col-lg-6 col-sm-6 col-6" id="conj-score">
+            <div class="col-xl-2 col-lg-6 col-sm-6 col-6 conjss-score">
                 <span class="score-info">SCORE:</span><span class="score-info-2">50</span>
             </div>
             <div class="col-xl-4 col-lg-6 col-sm-6 col-6">
@@ -73,7 +84,7 @@
     <!--RANKING JOGADOR-->
     <section>
         <div class="titulo-rank text-center">
-            <h1 class="titulos"><b>RANKING JOGADOR</b></h1>
+            <h2 class="titulos"><b>RANKING JOGADOR</b></h2>
             <hr class="hr">
         </div>
         <div class="rank bg-dark">
@@ -163,12 +174,12 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="email"><b>Data de nascimento:</b></label>
-                                <input readonly=“true” type="text" class="form-control" id="dtnasc" name="dtnasc"
+                                <input  type="text" class="form-control" id="dtnasc" name="dtnasc"
                                     placeholder="Não é possível alterar este campo" required>
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="name"><b>CPF:</b></label>
-                                <input readonly=“true” type="text" class="form-control" id="cpf" name="cpf"
+                                <input  type="text" class="form-control" id="cpf" name="cpf"
                                     placeholder="Não é possível alterar este campo" required>
                             </div>
                             <div class="form-group">
@@ -183,7 +194,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="name"><b>Username:</b></label>
-                                <input readonly=“true” type="text" class="form-control" id="username" name="username"
+                                <input  type="text" class="form-control" id="username" name="username"
                                     placeholder="Não é possível alterar este campo" required>
                             </div>
                             <div class="form-group">
@@ -192,18 +203,19 @@
                                     placeholder="Digite sua senha aqui" required>
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-success" id="btn-form" value="send"
-                                    style="margin:5px;"><b>Salvar</b>
-                                    <button type="submit" class="btn btn-danger" id="btn-form" value="send"
-                                        data-dismiss="modal"><b>Cancelar </b>
+                                <button type="submit" class="btn btn-success"  value="send"
+                                    style="margin:5px;"><b>Salvar</b></button>
+                                    <button type="submit" class="btn btn-danger"  value="send"
+                                        data-dismiss="modal"><b>Cancelar </b> </button>
                             </div>
                         </div>
+                    </form>
                 </div>
-                </form>
+               
             </div>
         </div>
     </div>
-    </div>
+
 
     <!-- Modal SAIR -->
     <div class="modal fade" id="sair_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -225,15 +237,6 @@
     </div>
 </body>
 
-<!--Ajax, Jquery, Js-->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
-</script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
-</script>
+
 
 </html>
