@@ -39,7 +39,7 @@ function layoutTetris() {
     for (let i = 0; i < line; i++) {
         for(let q = 0; q < col; q++) {
             const currentSquareColor = tab[i][q];
-            drawSquare(i, q, currentSquareColor);
+            layoutTetris(i, q, currentSquareColor);
         }
     }
 
