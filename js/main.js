@@ -18,6 +18,20 @@ let count_line = 0;
 const backgroundTab = "black"; //fundo color tab
 const borderTab = "red"; //bordar pra conseguir visualizar as peças e o size
 
+
+
+//Classe Piece
+class Pecas{
+    constructor(peca,color){ 
+        this.peca = peca;
+        this.color = color;
+        this.peca_index = 0; //Peça I, se for index 1: Peca J.
+        this.activePeca = this.peca[this.peca_index]; //PECA ATUAL, QUE FOI GERADA ALEATORIAMENTE.
+        this.x_board = 3; //x da matriz
+        this.y_board = -2; //y da matriz 
+        
+    }
+}
      
  //Peças rotacionadas (90, 180,270 graus)
 const I = [ [[0, 0, 0, 0],[1, 1, 1, 1],[0, 0, 0, 0],[0, 0, 0, 0],], [ [0, 0, 1, 0],[0, 0, 1, 0],[0, 0, 1, 0],[0, 0, 1, 0],], [ [0, 0, 0, 0],[0, 0, 0, 0],[1, 1, 1, 1],[0, 0, 0, 0],], [ [0, 1, 0, 0],[0, 1, 0, 0],[0, 1, 0, 0],[0, 1, 0, 0],]];
@@ -27,8 +41,9 @@ const O = [ [[0, 0, 0, 0],[0, 1, 1, 0],[0, 1, 1, 0],[0, 0, 0, 0],] ];
 const T = [ [[0, 1, 0],[1, 1, 1],[0, 0, 0]],[[0, 1, 0],[0, 1, 1],[0, 1, 0]],[[0, 0, 0],[1, 1, 1],[0, 1, 0]],[[0, 1, 0],[1, 1, 0],[0, 1, 0]]];
 const U = [ [[1, 0, 1],[1, 1, 1],[0, 0, 0]], [ [0, 1, 1],[0, 1, 0],[0, 1, 1]], [ [0, 0, 0],[1, 1, 1],[1, 0, 1]], [ [1, 1, 0],[0, 1, 0],[1, 1, 0]]];
 
+//Função para selecionar o tamanho do tabuleiro *fazer validação
 
-function choice(){//função para selecionar o tamanho do tabuleiro *fazer validação
+function choice(){
     var tabTAM = prompt("𝗘𝗦𝗖𝗢𝗟𝗛𝗔 𝗢 𝗧𝗔𝗕𝗨𝗟𝗘𝗜𝗥𝗢 𝗤𝗨𝗘 𝗗𝗘𝗦𝗘𝗝𝗔 𝗝𝗢𝗚𝗔𝗥\n𝟭 - Tabuleiro Clássico \n𝟮 - Tabuleiro Personalizado");
     if(tabTAM == 1){ //retorna as dimensões de cada tipo de tabuleiro
         N_COL = 10;
@@ -72,20 +87,6 @@ function Desenhar_quadradinho(row,col,color){
 // Constante de pecas.
 const tetrominoes = [[I,"yellow"],[J,"blue"], [L,"purple"],[O,"cyan"],[T,"orange"],[U,"red"]];
 
-
-//Classe Piece
-class Pecas{
-    constructor(peca,color){ 
-        this.peca = peca;
-        this.color = color;
-        this.peca_index = 0; //Peça I, se for index 1: Peca J.
-        this.activePeca = this.peca[this.peca_index]; //PECA ATUAL, QUE FOI GERADA ALEATORIAMENTE.
-        this.x_board = 3; //x da matriz
-        this.y_board = -2; //y da matriz 
-        
-    }
-}
-
 //Objeto do jogo.
 let tetrominoes_obj = pecas_aleatorias();
 // generate random PECASs
@@ -107,6 +108,7 @@ function Movimentation() {
 
 Movimentation();
 
+//Desenho de cada peça!!
 function fill_piece(color) { //Pintar a peça com uma cor.
     for(var linha = 0; linha < tetrominoes_obj.activePeca.length; linha++){
         for(var coluna = 0; coluna < tetrominoes_obj.activePeca.length; coluna++){   
