@@ -84,31 +84,6 @@ class Pecas{
         this.y_board = -2; //y da matriz 
         
     }
-    fill_piece(color) { //Pintar a peça com uma cor.
-        for(var linha = 0; linha < this.activePeca.length; linha++){
-            for(var coluna = 0; coluna < this.activePeca.length; coluna++){   
-                if(this.activePeca[linha][coluna] == 1){
-                    Desenhar_quadradinho((this.x_board + coluna),(this.y_board + linha), color);
-
-                }
-            }
-        }
-    }
-
-    draw() { //Desenhar a peça.
-        this.fill_piece(this.color);
-    }
-
-    unDraw() { //Apagar as peças
-        this.fill_piece(backgroundTab);
-    }   
-    
-    moveDown() { //Movimentação cte da peça
-        this.unDraw(); //Apagar a peça.
-        this.y_board ++;
-        this.draw();
-      
-    }
 }
 
 //Objeto do jogo.
@@ -120,19 +95,38 @@ function pecas_aleatorias(){
     return new Pecas(tetrominoes[peca_aleatoria][0],tetrominoes[peca_aleatoria][1]); //Criar a peca aleatoria. Posicao 0: Tipo de peca; Posicao 1: Cor da peça.
 }
 
-function drop() {
+function Movimentation() {
     const now = Date.now();
     const delta = now - dropStart; //Hora do frame atual do usuario - a hora que a peça comecou a cair.
-
     if (delta >= speed_peca) {  //Se passou os 500ms.(Para ajustar a velo do jogo.)
-        tetrominoes_obj.moveDown();
+        moveDown();
         dropStart = Date.now();//Atualizar o frame atual do usuário.
     }
-    requestAnimationFrame(drop);
+    requestAnimationFrame(Movimentation);
 }
 
-drop();
+Movimentation();
 
+function fill_piece(color) { //Pintar a peça com uma cor.
+    for(var linha = 0; linha < tetrominoes_obj.activePeca.length; linha++){
+        for(var coluna = 0; coluna < tetrominoes_obj.activePeca.length; coluna++){   
+            if(tetrominoes_obj.activePeca[linha][coluna] == 1){
+                Desenhar_quadradinho((tetrominoes_obj.x_board + coluna),(tetrominoes_obj.y_board + linha), color);
+            }
+        }
+    }
+}
+function drawPieces() { //Desenhar a peça.
+    fill_piece(tetrominoes_obj.color);
+}
 
+function deletePiece() { //Apagar as peças
+    fill_piece(backgroundTab);
+}   
 
-
+function moveDown() { //Movimentação cte da peça
+    deletePiece(); //Apagar a peça.
+    tetrominoes_obj.y_board ++;
+    drawPieces();
+  
+}
