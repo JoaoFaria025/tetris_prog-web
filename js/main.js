@@ -122,58 +122,124 @@ function fill_piece(color) { //Pintar a peça com uma cor.
         }
     }
 }
-function drawPieces() { //Desenhar a peça.
-    fill_piece(tetrominoes_obj.color);
-}
 
-function deletePiece() { //Apagar as peças
-    fill_piece(backgroundTab);
-}   
-
-function moveDown() { //Movimentação cte da peça
-    deletePiece(); //Apagar a peça.
-    tetrominoes_obj.y_board ++;
-    drawPieces();
-  
-}
-
-function moveRight(){
-    deletePiece(); //Apagar a peça.
-    tetrominoes_obj.x_board ++;
-    drawPieces();
-}
-
-function moveLeft(){
-    deletePiece(); //Apagar a peça.
-    tetrominoes_obj.x_board --;
-    drawPieces();
-}
-
-Pecas.prototype.rodar = function(){
-    deletePiece(); //Apagar a peça.
-    this.peca_index = (this.peca_index + 1)%this.peca.length;
-    this.activePeca = this.peca[this.peca_index];
-    drawPieces();
-}
-document.onkeydown = function (e) {
-    switch (e.key) {
-        case 'ArrowUp':
-            tetrominoes_obj.rodar();
-            
-            break;
-        case 'ArrowDown':
-            moveDown();
-            
-            break;
-        case 'ArrowLeft':
-            moveLeft();
-            dropStart = Date.now();
-            break;
-        case 'ArrowRight':
-            moveRight();
-            dropStart = Date.now();
+    //Desenhar a peça.
+    function drawPieces() { 
+        fill_piece(tetrominoes_obj.color);
     }
-};
+
+    //Apagar as peças
+    function deletePiece() { 
+        fill_piece(backgroundTab);
+    }   
+
+    //Movimentação cte da peça para baixo!!
+    function moveDown() { 
+        if(!CheckCollision(0,1,tetrominoes_obj.activePeca)){
+            //Se não estiver colidindo com nada, ela pode continuar descendo!!
+            deletePiece(); //Apagar a peça.
+            tetrominoes_obj.y_board ++;
+            drawPieces();
+            return;
+        }
+        else{
+            tetrominoes_obj = pecas_aleatorias();
+        }
+      
+    }
+
+    //Mover para direita
+    function moveRight(){
+        if (!CheckCollision(1, 0, tetrominoes_obj.activePeca)) {
+        deletePiece(); //Apagar a peça.
+        tetrominoes_obj.x_board ++;
+        drawPieces();
+        }
+    }
+    //Mover para Esquerda
+    function moveLeft(){
+        if (!CheckCollision(-1, 0, tetrominoes_obj.activePeca)) {
+        deletePiece(); //Apagar a peça.
+        tetrominoes_obj.x_board --;
+        drawPieces();
+        }
+    }
+
+    //Rotação da peça:
+    Pecas.prototype.rodar = function(){
+        let peca_padrao = tetrominoes_obj.peca[(tetrominoes_obj.peca_index + 1) % tetrominoes_obj.peca.length];
+        let mov = 0;
+        if (CheckCollision(0, 0, peca_padrao)) {
+            mov = 1;
+            if (tetrominoes_obj.x_board > N_COL / 2) {
+                mov = -1;
+            }
+        }
+        if (!CheckCollision(mov, 0, peca_padrao)) {
+        deletePiece(); //Apagar a peça.
+        tetrominoes_obj.x_board += mov;
+        tetrominoes_obj.peca_index = (tetrominoes_obj.peca_index + 1) % tetrominoes_obj.peca.length;
+        tetrominoes_obj.activePeca = tetrominoes_obj.peca[tetrominoes_obj.peca_index];
+        drawPieces();
+
+        }
+    }
+    document.onkeydown = function (e) {
+        switch (e.key) {
+            case 'ArrowUp':
+                tetrominoes_obj.rodar();
+                
+                break;
+            case 'ArrowDown':
+                moveDown();
+                
+                break;
+            case 'ArrowLeft':
+                moveLeft();
+                dropStart = Date.now();
+                break;
+            case 'ArrowRight':
+                moveRight();
+                dropStart = Date.now();
+        }
+    };
+
+
+//Funcao para checar a colisao das peças!!
+    function CheckCollision(row, col, futurePiece) { 
+        for (var linha = 0; linha < futurePiece.length; linha++) {
+            for (var coluna = 0; coluna < futurePiece.length; coluna++) {
+                if(futurePiece[linha][coluna] != 0 ) { //Se existir alguma peça nessa coluna e linha! 
+                    var newRow = tetrominoes_obj.x_board + coluna + row;
+                    var newCol = tetrominoes_obj.y_board + linha + col;
+
+                    // Checar os limites do tabuleiro. Se a peça está colidindo com o X=0 (board esquerdo);
+                    // Se peça chegou no limite do tabuleiro (final de linhas)
+                    // Se a peça não ultrapassou o limite do board direito
+
+                    if (newRow < 0 || newRow >= N_COL || newCol >= N_ROW) {
+                    //Colisão para as bordas
+                        return true;
+                        //Se trombar com alguma peça, retorne true!!
+                    }   
+
+                    if (newCol < 0) {
+                        //Colisão para as bordas
+                        continue;
+                    } //
+                    if (tabuleiro[newCol][newRow] != backgroundTab) {
+                        //Colidir com algum quadrado que já esteja pintado.
+                        return true;
+                    }
+                }
+                else{
+                    continue;
+                }
+                    
+            }
+            }
+            return false;
+        }
 
 /* TEMPORIZADOR JOGO */
 
@@ -205,3 +271,6 @@ function timer(){
     //Retorna o valor tratado
     return format;
 }
+
+
+
