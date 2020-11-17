@@ -14,6 +14,7 @@ header{height:180px;padding-top: 105px;padding-left: 7px;color:white;}
 /*main*/
 main{color:white;text-align: center;margin-top: 50px;height: 700px;}
 #img-tetris-rt{height:500px; margin-top: 100px}
+#rt{display:block;margin: 0 auto;}
 
 /*section*/
 section{margin-top: 100px;height:600px;}
