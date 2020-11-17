@@ -1,5 +1,5 @@
 const scorePlayer = document.getElementById("score");//const usadas depois para setar os atributos
-const timerPlayer = document.getElementById("tempo");
+/*const timerPlayer = document.getElementById("tempo");*/
 const linesPlayer = document.getElementById("linhaseliminadas");
 const dificultPlayer = document.getElementById("dificuldade");
 var cvs = document.getElementById("rt");
@@ -15,10 +15,13 @@ let dropStart = Date.now();//Frame atual do usuário inicial.
 let score = 0;
 let count_line = 0;
 
-const backgroundTab = "black"; //fundo color tab
-const borderTab = "red"; //bordar pra conseguir visualizar as peças e o size
+const backgroundTab = "#2c3e50"; //fundo color tab
+const borderTab = "#ff5e57"; //bordar pra conseguir visualizar as peças e o size
 
-
+var minutes = 0;
+var seconds = 0;
+var timerMilesimos = 1000; //1 segundo tem 1000 milésimos
+var timerPlayer = 0;
 
 //Classe Piece
 class Pecas{
@@ -65,6 +68,7 @@ function choice(){
     }
     
     layoutTetris();
+    startTimer(); //inicia o cronomêtro
 }
 
 
@@ -85,7 +89,7 @@ function Desenhar_quadradinho(row,col,color){
     context_tetris.strokeRect(row * tamPecas , col * tamPecas , tamPecas , tamPecas );
 }
 // Constante de pecas.
-const tetrominoes = [[I,"yellow"],[J,"blue"], [L,"purple"],[O,"cyan"],[T,"orange"],[U,"red"]];
+const tetrominoes = [[I,"#55E6C1"],[J,"#1B9CFC"], [L,"#ffcccc"],[O,"#32ff7e"],[T,"#c23616"],[U,"#ffffff"]];
 
 //Objeto do jogo.
 let tetrominoes_obj = pecas_aleatorias();
@@ -170,3 +174,34 @@ document.onkeydown = function (e) {
             dropStart = Date.now();
     }
 };
+
+/* TEMPORIZADOR JOGO */
+
+function startTimer(){
+    timerPlayer = setInterval(() => { timer(); }, timerMilesimos);
+}
+function stopTimer(){
+    clearInterval(timerPlayer);
+}
+function timer(){
+    seconds++; //Incrementa +1 na variável seconds
+
+    if (seconds == 59) { //Verifica se deu 59 segundos
+        seconds = 0; //Volta os segundos para 0
+        minutes++; //Adiciona +1 na variável minutes
+
+        if (minutes == 59) { //Verifica se deu 59 minutos
+            minutes = 0;//Volta os minutos para 0
+        
+        }
+    }
+    
+    //Cria uma variável com o valor tratado MM:SS
+    var format = (minutes< 10 ? '0' + minutes: minutes) + ':' + (seconds< 10 ? '0' + seconds: seconds);
+    
+    //Insere o valor tratado no elemento counter
+    document.getElementById('tempo').innerText = format;
+
+    //Retorna o valor tratado
+    return format;
+}
