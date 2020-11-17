@@ -18,9 +18,13 @@ function choice(){//função para selecionar o tamanho do tabuleiro *fazer valid
     if(tabTAM == 1){ //retorna as dimensões de cada tipo de tabuleiro
         col = 10;
         line = 20;
+        /*cvs.width = 280;//tamanho do canva p/ este tabuleiro
+        cvs.width = 580;*/
     }else{
         col = 22;
         line = 44;
+        /*cvs.width = 500;//tamanho do canva p/ este tabuleiro
+        cvs.width = 1000;*/
     }
 
     for (let i = 0; i < line; i++) {
@@ -39,7 +43,7 @@ function layoutTetris() {
     for (let i = 0; i < line; i++) {
         for(let q = 0; q < col; q++) {
             const currentSquareColor = tab[i][q];
-            drawSquare(i, q, currentSquareColor);
+           paintLayout(i, q, currentSquareColor);
         }
     }
 
