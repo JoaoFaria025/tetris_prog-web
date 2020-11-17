@@ -132,3 +132,41 @@ function moveDown() { //Movimentação cte da peça
     drawPieces();
   
 }
+
+function moveRight(){
+    deletePiece(); //Apagar a peça.
+    tetrominoes_obj.x_board ++;
+    drawPieces();
+}
+
+function moveLeft(){
+    deletePiece(); //Apagar a peça.
+    tetrominoes_obj.x_board --;
+    drawPieces();
+}
+
+Pecas.prototype.rodar = function(){
+    deletePiece(); //Apagar a peça.
+    this.peca_index = (this.peca_index + 1)%this.peca.length;
+    this.activePeca = this.peca[this.peca_index];
+    drawPieces();
+}
+document.onkeydown = function (e) {
+    switch (e.key) {
+        case 'ArrowUp':
+            tetrominoes_obj.rodar();
+            
+            break;
+        case 'ArrowDown':
+            moveDown();
+            
+            break;
+        case 'ArrowLeft':
+            moveLeft();
+            dropStart = Date.now();
+            break;
+        case 'ArrowRight':
+            moveRight();
+            dropStart = Date.now();
+    }
+};
