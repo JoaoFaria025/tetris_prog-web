@@ -60,6 +60,7 @@ function paintLayout(y, x, color) {
     canva.strokeRect(x * tamPecas, y * tamPecas, tamPecas, tamPecas);
 }
 
+
 function piecesDesign(){
     const I = [
         [
@@ -212,3 +213,4 @@ function piecesDesign(){
         ]
     ];
 }
+
