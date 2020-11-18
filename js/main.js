@@ -291,10 +291,8 @@ function lock(){
             tabuleiro[tetrominoes_obj.y_board + linha][tetrominoes_obj.x_board + coluna]  = tetrominoes_obj.color;
             }
         }
-
     }
     layoutTetris();
-
 }
 
 
