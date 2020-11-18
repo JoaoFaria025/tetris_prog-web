@@ -1,7 +1,11 @@
+
+//------------- Constantes ------------------
 const scorePlayer = document.getElementById("score");//const usadas depois para setar os atributos
-/*const timerPlayer = document.getElementById("tempo");*/
 const linesPlayer = document.getElementById("linhaseliminadas");
 const dificultPlayer = document.getElementById("dificuldade");
+const tamPecas = 20; //size peça in px
+const backgroundTab = "#2c3e50"; //fundo color tab
+const borderTab = "#ff5e57"; //bordar pra conseguir visualizar as peças e o size
 
 //------------- CANVAS ------------------
 var cvs = document.getElementById("rt");
@@ -9,29 +13,22 @@ var context_tetris = cvs.getContext("2d");//declarando o efeito de jogo
 var nextCanvas = document.getElementById('Next_piece');
 var nextBlocks = nextCanvas.getContext("2d");
 
-
 // ----------- Variaveis do game ------------
 var N_ROW = 0;//tabuleiro dimensão
 var N_COL = 0;
 var tabuleiro = [];
-const tamPecas = 20; //size peça in px
 let speed_peca= 500;
 let dropStart = Date.now();//Frame atual do usuário inicial.
 let score = 0;
 let count_line = 0;
-
-const backgroundTab = "#2c3e50"; //fundo color tab
-const borderTab = "#ff5e57"; //bordar pra conseguir visualizar as peças e o size
-
 var minutes = 0;
 var seconds = 0;
 var timerMilesimos = 1000; //1 segundo tem 1000 milésimos
 var timerPlayer = 0;
-
-
 var qtdLinhas = 0; //Cria variável que conta a quantidade de linhas eliminadas
 
-//Classe Piece
+// ----------- Classe PECAS------------
+
 class Pecas{
     constructor(peca,color){ 
         this.peca = peca;
@@ -45,16 +42,21 @@ class Pecas{
     }
 }
      
- //Peças rotacionadas (90, 180,270 graus)
+// ----------- Constantes das peças (tetrominoes) ------------
+
+//Peças rotacionadas (90, 180,270 graus)
 const I = [ [[0, 0, 0, 0],[1, 1, 1, 1],[0, 0, 0, 0],[0, 0, 0, 0],], [ [0, 0, 1, 0],[0, 0, 1, 0],[0, 0, 1, 0],[0, 0, 1, 0],], [ [0, 0, 0, 0],[0, 0, 0, 0],[1, 1, 1, 1],[0, 0, 0, 0],], [ [0, 1, 0, 0],[0, 1, 0, 0],[0, 1, 0, 0],[0, 1, 0, 0],]];
 const J = [ [[1, 0, 0],[1, 1, 1],[0, 0, 0]], [ [0, 1, 1],[0, 1, 0],[0, 1, 0] ],[ [0, 0, 0],[1, 1, 1],[0, 0, 1] ],[ [0, 1, 0],[0, 1, 0],[1, 1, 0] ]];
 const L = [ [[0, 0, 1],[1, 1, 1],[0, 0, 0]], [ [0, 1, 0],[0, 1, 0],[0, 1, 1] ], [ [0, 0, 0],[1, 1, 1],[1, 0, 0] ], [ [1, 1, 0],[0, 1, 0],[0, 1, 0] ]];
 const O = [ [[0, 0, 0, 0],[0, 1, 1, 0],[0, 1, 1, 0],[0, 0, 0, 0],] ];
 const T = [ [[0, 1, 0],[1, 1, 1],[0, 0, 0]],[[0, 1, 0],[0, 1, 1],[0, 1, 0]],[[0, 0, 0],[1, 1, 1],[0, 1, 0]],[[0, 1, 0],[1, 1, 0],[0, 1, 0]]];
 const U = [ [[1, 0, 1],[1, 1, 1],[0, 0, 0]], [ [0, 1, 1],[0, 1, 0],[0, 1, 1]], [ [0, 0, 0],[1, 1, 1],[1, 0, 1]], [ [1, 1, 0],[0, 1, 0],[1, 1, 0]]];
+//Peças e suas cores.
+const tetrominoes = [[I,"#55E6C1"],[J,"#1B9CFC"], [L,"#ffcccc"],[O,"#32ff7e"],[T,"#c23616"],[U,"#ffffff"]];
 
-//Função para selecionar o tamanho do tabuleiro *fazer validação
 
+
+// ----------- Função para selecionar o tamanho do tabuleiro *fazer validação ------------
 function choice(){
     var tabTAM = prompt("𝗘𝗦𝗖𝗢𝗟𝗛𝗔 𝗢 𝗧𝗔𝗕𝗨𝗟𝗘𝗜𝗥𝗢 𝗤𝗨𝗘 𝗗𝗘𝗦𝗘𝗝𝗔 𝗝𝗢𝗚𝗔𝗥\n𝟭 - Tabuleiro Clássico \n𝟮 - Tabuleiro Personalizado");
     if(tabTAM == 1){ //retorna as dimensões de cada tipo de tabuleiro
@@ -75,14 +77,13 @@ function choice(){
             tabuleiro[linha][coluna] = backgroundTab;
         }
     }
-    
     layoutTetris();
     startTimer(); //inicia o cronomêtro
 }
 
 
-
-function layoutTetris() { //Desenhar tabuleiro
+// ----------- Desenhar o tabuleiro (DrawBoard) ------------
+function layoutTetris() { 
     for (var linha = 0; linha < N_ROW; linha++) {
         for(var coluna = 0; coluna < N_COL; coluna++) {
             const cor_atual = tabuleiro[linha][coluna];
@@ -91,6 +92,9 @@ function layoutTetris() { //Desenhar tabuleiro
     }
 
 }
+
+// ----------- Desenhar o nextPiece  ------------
+
 function drawNextPiece(next){  
     nextCanvas.width = 100;
     nextCanvas.height = 100;
@@ -108,6 +112,8 @@ function Desenhar_NEXT_quadradinhos(row,col,color){
     nextBlocks.strokeRect(col*tamPecas, row*tamPecas, tamPecas, tamPecas);
 }
 
+// ----------- Desenhar a peça padrao (Piece (Tetrominoes)) ------------
+
 function Desenhar_quadradinho(row,col,color){
     context_tetris.fillStyle = color; //Cor atual do quadradinho.
     context_tetris.fillRect(row * tamPecas , col * tamPecas , tamPecas, tamPecas);
@@ -115,21 +121,23 @@ function Desenhar_quadradinho(row,col,color){
     context_tetris.strokeRect(row * tamPecas , col * tamPecas , tamPecas , tamPecas );
 }
 
-// Constante de pecas.
-const tetrominoes = [[I,"#55E6C1"],[J,"#1B9CFC"], [L,"#ffcccc"],[O,"#32ff7e"],[T,"#c23616"],[U,"#ffffff"]];
+// ----------- Objetos ------------
 
-//Objeto do jogo.
 let tetrominoes_obj = pecas_aleatorias();
 let next_piece = pecas_aleatorias();
-
 //Desenhar a proxima peça
 drawNextPiece(next_piece);
 
-// generate random PECASs
+
+// ----------- Gerar peças aleatorias ------------
+
 function pecas_aleatorias(){
     const peca_aleatoria  = Math.floor(Math.random() * tetrominoes.length) // Peça aleatoria de 0 a  6. O length se refere a qtd_pecas na const
     return new Pecas(tetrominoes[peca_aleatoria][0],tetrominoes[peca_aleatoria][1]); //Criar a peca aleatoria. Posicao 0: Tipo de peca; Posicao 1: Cor da peça.
 }
+
+
+// ----------- Movimentação da peça! ------------
 
 function Movimentation() {
     //Movimentação da peça!!
@@ -146,10 +154,9 @@ function Movimentation() {
     
    
 }
-
 Movimentation();
 
-//Desenho de cada peça!!
+//Pintura de cada peça!!
 function fill_piece(color) { //Pintar a peça com uma cor.
     for(var linha = 0; linha < tetrominoes_obj.activePeca.length; linha++){
         for(var coluna = 0; coluna < tetrominoes_obj.activePeca.length; coluna++){   
@@ -279,7 +286,8 @@ function CheckCollision(row, col, futurePiece) {
     return false;
 }
 
-//Travar as peças
+//Travar as peças quando colidir
+
 function lock(){
     for(var linha = 0; linha < tetrominoes_obj.activePeca.length; linha++){
         for(var coluna = 0; coluna < tetrominoes_obj.activePeca.length; coluna++){
@@ -302,12 +310,7 @@ function lock(){
     layoutTetris();
 }
 
-
-
-
-
-
-/* TEMPORIZADOR JOGO */
+// TEMPORIZADOR JOGO 
 function startTimer(){
     timerPlayer = setInterval(() => { timer(); }, timerMilesimos);
 }
@@ -336,8 +339,8 @@ document.getElementById('tempo').innerText = format;
 //Retorna o valor tratado
 return format;
 
-
-/* SCORE E REMOVER LINHAS */
+}
+// SCORE E REMOVER LINHAS 
 function atualizarLinhaScore(N_ROW){ //atualizar caso tenha uma linha completa (deletar a mesma) e somar no score
     var linhasExcluidas = 0;
     for (let y = N_ROW; y > 1; y--){
@@ -365,7 +368,7 @@ function contLinhas() {
     document.getElementById('linhaseliminadas').innerHTML = contadorLinhas;
 }
 
-}
+
 
 
 
