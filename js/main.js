@@ -23,6 +23,9 @@ var seconds = 0;
 var timerMilesimos = 1000; //1 segundo tem 1000 milésimos
 var timerPlayer = 0;
 
+
+var qtdLinhas = 0; //Cria variável que conta a quantidade de linhas eliminadas
+
 //Classe Piece
 class Pecas{
     constructor(peca,color){ 
@@ -88,13 +91,14 @@ function Desenhar_quadradinho(row,col,color){
     context_tetris.strokeStyle = borderTab;//Cor das linhas que dividem a coluna e as linhas.
     context_tetris.strokeRect(row * tamPecas , col * tamPecas , tamPecas , tamPecas );
 }
+
 // Constante de pecas.
 const tetrominoes = [[I,"#55E6C1"],[J,"#1B9CFC"], [L,"#ffcccc"],[O,"#32ff7e"],[T,"#c23616"],[U,"#ffffff"]];
 
 //Objeto do jogo.
 let tetrominoes_obj = pecas_aleatorias();
-// generate random PECASs
 
+// generate random PECASs
 function pecas_aleatorias(){
     const peca_aleatoria  = Math.floor(Math.random() * tetrominoes.length) // Peça aleatoria de 0 a  6. O length se refere a qtd_pecas na const
     return new Pecas(tetrominoes[peca_aleatoria][0],tetrominoes[peca_aleatoria][1]); //Criar a peca aleatoria. Posicao 0: Tipo de peca; Posicao 1: Cor da peça.
@@ -123,126 +127,120 @@ function fill_piece(color) { //Pintar a peça com uma cor.
     }
 }
 
-    //Desenhar a peça.
-    function drawPieces() { 
-        fill_piece(tetrominoes_obj.color);
-    }
+//Desenhar a peça.
+function drawPieces() { 
+    fill_piece(tetrominoes_obj.color);
+}
 
-    //Apagar as peças
-    function deletePiece() { 
-        fill_piece(backgroundTab);
-    }   
+//Apagar as peças
+function deletePiece() { 
+    fill_piece(backgroundTab);
+}   
 
-    //Movimentação cte da peça para baixo!!
-    function moveDown() { 
-        if(!CheckCollision(0,1,tetrominoes_obj.activePeca)){
-            //Se não estiver colidindo com nada, ela pode continuar descendo!!
-            deletePiece(); //Apagar a peça.
-            tetrominoes_obj.y_board ++;
-            drawPieces();
-            return;
-        }
-        else{
-            tetrominoes_obj = pecas_aleatorias();
-        }
-      
-    }
-
-    //Mover para direita
-    function moveRight(){
-        if (!CheckCollision(1, 0, tetrominoes_obj.activePeca)) {
+//Movimentação da peça para baixo
+function moveDown() { 
+    if(!CheckCollision(0,1,tetrominoes_obj.activePeca)){
+        //Se não estiver colidindo com nada, ela pode continuar descendo!!
         deletePiece(); //Apagar a peça.
-        tetrominoes_obj.x_board ++;
+        tetrominoes_obj.y_board ++;
         drawPieces();
-        }
+        return;
     }
-    //Mover para Esquerda
-    function moveLeft(){
-        if (!CheckCollision(-1, 0, tetrominoes_obj.activePeca)) {
+    else{
+        tetrominoes_obj = pecas_aleatorias();
+    } 
+}
+
+//Mover para direita
+function moveRight(){
+    if (!CheckCollision(1, 0, tetrominoes_obj.activePeca)) {
+    deletePiece(); //Apagar a peça.
+    tetrominoes_obj.x_board ++;
+    drawPieces();
+    }
+}
+
+//Mover para Esquerda
+function moveLeft(){
+    if (!CheckCollision(-1, 0, tetrominoes_obj.activePeca)) {
         deletePiece(); //Apagar a peça.
         tetrominoes_obj.x_board --;
         drawPieces();
+    }
+}
+
+//Rotação da peça:
+Pecas.prototype.rodar = function(){
+    let peca_padrao = tetrominoes_obj.peca[(tetrominoes_obj.peca_index + 1) % tetrominoes_obj.peca.length];
+    let mov = 0;
+    if (CheckCollision(0, 0, peca_padrao)) {
+        mov = 1;
+        if (tetrominoes_obj.x_board > N_COL / 2) {
+            mov = -1;
         }
     }
-
-    //Rotação da peça:
-    Pecas.prototype.rodar = function(){
-        let peca_padrao = tetrominoes_obj.peca[(tetrominoes_obj.peca_index + 1) % tetrominoes_obj.peca.length];
-        let mov = 0;
-        if (CheckCollision(0, 0, peca_padrao)) {
-            mov = 1;
-            if (tetrominoes_obj.x_board > N_COL / 2) {
-                mov = -1;
-            }
-        }
-        if (!CheckCollision(mov, 0, peca_padrao)) {
+    if (!CheckCollision(mov, 0, peca_padrao)) {
         deletePiece(); //Apagar a peça.
         tetrominoes_obj.x_board += mov;
         tetrominoes_obj.peca_index = (tetrominoes_obj.peca_index + 1) % tetrominoes_obj.peca.length;
         tetrominoes_obj.activePeca = tetrominoes_obj.peca[tetrominoes_obj.peca_index];
         drawPieces();
-
-        }
     }
-    document.onkeydown = function (e) {
-        switch (e.key) {
-            case 'ArrowUp':
-                tetrominoes_obj.rodar();
-                
-                break;
-            case 'ArrowDown':
-                moveDown();
-                
-                break;
-            case 'ArrowLeft':
-                moveLeft();
-                dropStart = Date.now();
-                break;
-            case 'ArrowRight':
-                moveRight();
-                dropStart = Date.now();
+}
+    
+document.onkeydown = function (e) {
+    switch (e.key) {
+        case 'ArrowUp':
+            tetrominoes_obj.rodar();
+            break;
+        case 'ArrowDown':
+            moveDown();
+            break;
+        case 'ArrowLeft':
+            moveLeft();
+            dropStart = Date.now();
+            break;
+        case 'ArrowRight':
+            moveRight();
+            dropStart = Date.now();
         }
-    };
+};
 
+//Funcao para checar a colisao das peças
+function CheckCollision(row, col, futurePiece) { 
+    for (var linha = 0; linha < futurePiece.length; linha++) {
+        for (var coluna = 0; coluna < futurePiece.length; coluna++) {
+            if(futurePiece[linha][coluna] != 0 ) { //Se existir alguma peça nessa coluna e linha! 
+                var newRow = tetrominoes_obj.x_board + coluna + row;
+                var newCol = tetrominoes_obj.y_board + linha + col;
 
-//Funcao para checar a colisao das peças!!
-    function CheckCollision(row, col, futurePiece) { 
-        for (var linha = 0; linha < futurePiece.length; linha++) {
-            for (var coluna = 0; coluna < futurePiece.length; coluna++) {
-                if(futurePiece[linha][coluna] != 0 ) { //Se existir alguma peça nessa coluna e linha! 
-                    var newRow = tetrominoes_obj.x_board + coluna + row;
-                    var newCol = tetrominoes_obj.y_board + linha + col;
-
-                    // Checar os limites do tabuleiro. Se a peça está colidindo com o X=0 (board esquerdo);
-                    // Se peça chegou no limite do tabuleiro (final de linhas)
-                    // Se a peça não ultrapassou o limite do board direito
-
-                    if (newRow < 0 || newRow >= N_COL || newCol >= N_ROW) {
+                // Checar os limites do tabuleiro. Se a peça está colidindo com o X=0 (board esquerdo);
+                // Se peça chegou no limite do tabuleiro (final de linhas)
+                // Se a peça não ultrapassou o limite do board direito
+                if (newRow < 0 || newRow >= N_COL || newCol >= N_ROW) {
                     //Colisão para as bordas
-                        return true;
-                        //Se trombar com alguma peça, retorne true!!
-                    }   
-
-                    if (newCol < 0) {
-                        //Colisão para as bordas
-                        continue;
-                    } //
-                    if (tabuleiro[newCol][newRow] != backgroundTab) {
-                        //Colidir com algum quadrado que já esteja pintado.
-                        return true;
-                    }
-                }
-                else{
+                    return true;
+                    //Se trombar com alguma peça, retorne true!!
+                }   
+                if (newCol < 0) {
+                    //Colisão para as bordas
                     continue;
                 }
+                if (tabuleiro[newCol][newRow] != backgroundTab) {
+                    //Colidir com algum quadrado que já esteja pintado.
+                    return true;
+                    }
+            }
+            else{
+                continue;
+            }
                     
-            }
-            }
-            return false;
         }
+    }
+    return false;
+}
 
 /* TEMPORIZADOR JOGO */
-
 function startTimer(){
     timerPlayer = setInterval(() => { timer(); }, timerMilesimos);
 }
@@ -262,14 +260,44 @@ function timer(){
         }
     }
     
-    //Cria uma variável com o valor tratado MM:SS
-    var format = (minutes< 10 ? '0' + minutes: minutes) + ':' + (seconds< 10 ? '0' + seconds: seconds);
+//Cria uma variável com o valor tratado MM:SS
+var format = (minutes< 10 ? '0' + minutes: minutes) + ':' + (seconds< 10 ? '0' + seconds: seconds);
     
-    //Insere o valor tratado no elemento counter
-    document.getElementById('tempo').innerText = format;
+//Insere o valor tratado no elemento counter
+document.getElementById('tempo').innerText = format;
 
-    //Retorna o valor tratado
-    return format;
+//Retorna o valor tratado
+return format;
+
+
+/* SCORE E REMOVER LINHAS */
+function atualizarLinhaScore(N_ROW){ //atualizar caso tenha uma linha completa (deletar a mesma) e somar no score
+    var linhasExcluidas = 0;
+    for (let y = N_ROW; y > 1; y--){
+        for (let coluna = 0; coluna < N_COL; coluna++){
+            removerLinha(y, coluna) //diminuir linha atual (remover linha)
+            contLinhas();
+            linhasExcluidas++;
+        }
+    }
+    for (let coluna = 0; coluna < N_COL; coluna++){
+        tabuleiro[0][coluna] = backgroundTab; //'pintando' a primeira linha
+    }
+    if (linhasExcluidas > 0) { //se tiver linha completa, atualizar score
+        score += (linhasExcluidas*10)*linhasExcluidas; //numero de linhas excluidas * 10 pontos * (bonus)
+        var contadorScore = score.toString();
+        document.getElementById('score').innerHTML = contadorScore;
+    } 
+}
+function removerLinha(linhaaRemover, colunaaRemover) {
+    tabuleiro[linhaaRemover][coluna] = tabuleiro[linhaaRemover - 1][coluna];
+}
+function contLinhas() {
+    qtdLinhas++;
+    var contadorLinhas = qtdLinhas.toString();
+    document.getElementById('linhaseliminadas').innerHTML = contadorLinhas;
+}
+
 }
 
 
