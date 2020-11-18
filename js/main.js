@@ -133,13 +133,18 @@ function pecas_aleatorias(){
 
 function Movimentation() {
     //Movimentação da peça!!
+    let gameOver = false;
     const now = Date.now();
     const delta = now - dropStart; //Hora do frame atual do usuario - a hora que a peça comecou a cair.
     if (delta >= speed_peca) {  //Se passou os 500ms.(Para ajustar a velo do jogo.)
         moveDown();
         dropStart = Date.now();//Atualizar o frame atual do usuário.
     }
-    requestAnimationFrame(Movimentation);
+    if(!gameOver){
+        requestAnimationFrame(Movimentation);
+    }
+    
+   
 }
 
 Movimentation();
@@ -285,6 +290,8 @@ function lock(){
             else if(tetrominoes_obj.y_board + linha < 0){
                 //Se estiver acima do quadro, é pq deu gameover. (ROLLING TETRIS MUDAR!!).
                // gameOver();
+               gameOver = true;
+               alert("Você perdeu :(")
                 break;
             }
             else{
