@@ -2,14 +2,19 @@ const scorePlayer = document.getElementById("score");//const usadas depois para 
 /*const timerPlayer = document.getElementById("tempo");*/
 const linesPlayer = document.getElementById("linhaseliminadas");
 const dificultPlayer = document.getElementById("dificuldade");
+
+//------------- CANVAS ------------------
 var cvs = document.getElementById("rt");
 var context_tetris = cvs.getContext("2d");//declarando o efeito de jogo
+var nextCanvas = document.getElementById('Next_piece');
+var nextBlocks = nextCanvas.getContext("2d");
 
+
+// ----------- Variaveis do game ------------
 var N_ROW = 0;//tabuleiro dimensão
 var N_COL = 0;
 var tabuleiro = [];
 const tamPecas = 20; //size peça in px
-//Variaveis do game.
 let speed_peca= 100;
 let dropStart = Date.now();//Frame atual do usuário inicial.
 let score = 0;
@@ -31,6 +36,7 @@ class Pecas{
     constructor(peca,color){ 
         this.peca = peca;
         this.color = color;
+        this.peca_next=null;
         this.peca_index = 0; //Peça I, se for index 1: Peca J.
         this.activePeca = this.peca[this.peca_index]; //PECA ATUAL, QUE FOI GERADA ALEATORIAMENTE.
         this.x_board = 3; //x da matriz
@@ -85,6 +91,23 @@ function layoutTetris() { //Desenhar tabuleiro
     }
 
 }
+function drawNextPiece(next){  
+    nextCanvas.width = 100;
+    nextCanvas.height = 100;
+    for (let linha = 0; linha < next.activePeca.length;  linha++) { 
+        for (let coluna = 0; coluna < next.activePeca.length ; coluna++) {
+            if(next.activePeca[linha][coluna] == 1){
+                Desenhar_NEXT_quadradinhos(linha,coluna, next.color);
+            }
+        }
+    }  
+}
+function Desenhar_NEXT_quadradinhos(row,col,color){
+    nextBlocks.fillStyle = color ; //Define a cor do bloco gerado
+    nextBlocks.fillRect(col*tamPecas, row*tamPecas, tamPecas, tamPecas);//Linha*tamDoBloco,Coluna*TamDoBloco, TamDoBloco,TamDoBloco
+    nextBlocks.strokeRect(col*tamPecas, row*tamPecas, tamPecas, tamPecas);
+}
+
 function Desenhar_quadradinho(row,col,color){
     context_tetris.fillStyle = color; //Cor atual do quadradinho.
     context_tetris.fillRect(row * tamPecas , col * tamPecas , tamPecas, tamPecas);
@@ -97,6 +120,10 @@ const tetrominoes = [[I,"#55E6C1"],[J,"#1B9CFC"], [L,"#ffcccc"],[O,"#32ff7e"],[T
 
 //Objeto do jogo.
 let tetrominoes_obj = pecas_aleatorias();
+let next_piece = pecas_aleatorias();
+
+//Desenhar a proxima peça
+drawNextPiece(next_piece);
 
 // generate random PECASs
 function pecas_aleatorias(){
@@ -105,6 +132,7 @@ function pecas_aleatorias(){
 }
 
 function Movimentation() {
+    //Movimentação da peça!!
     const now = Date.now();
     const delta = now - dropStart; //Hora do frame atual do usuario - a hora que a peça comecou a cair.
     if (delta >= speed_peca) {  //Se passou os 500ms.(Para ajustar a velo do jogo.)
@@ -147,7 +175,13 @@ function moveDown() {
         return;
     }
     else{
-        tetrominoes_obj = pecas_aleatorias();
+        //Se ela colidir, então:
+        //Trava a movimentação dela:
+        lock();
+        //Gera a proxima peça.
+        tetrominoes_obj = next_piece;
+        next_piece = pecas_aleatorias();
+        drawNextPiece(next_piece);
     } 
 }
 
@@ -239,6 +273,34 @@ function CheckCollision(row, col, futurePiece) {
     }
     return false;
 }
+
+//Travar as peças
+function lock(){
+    for(var linha = 0; linha < tetrominoes_obj.activePeca.length; linha++){
+        for(var coluna = 0; coluna < tetrominoes_obj.activePeca.length; coluna++){
+            if(tetrominoes_obj.activePeca[linha][coluna] == 0 ){ 
+                //Se não encostar em nenhuma peça
+                continue;
+            }
+            else if(tetrominoes_obj.y_board + linha < 0){
+                //Se estiver acima do quadro, é pq deu gameover. (ROLLING TETRIS MUDAR!!).
+               // gameOver();
+                break;
+            }
+            else{
+            tabuleiro[tetrominoes_obj.y_board + linha][tetrominoes_obj.x_board + coluna]  = tetrominoes_obj.color;
+            }
+        }
+
+    }
+    layoutTetris();
+
+}
+
+
+
+
+
 
 /* TEMPORIZADOR JOGO */
 function startTimer(){
