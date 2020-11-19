@@ -415,7 +415,8 @@ function gameOver() {
         resetGame();
     }
     else{
-        alert("a")
+        reiniciar_jogo();
+        resetGame();
     }
 }
 
