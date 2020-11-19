@@ -10,7 +10,9 @@
 header{height:180px;padding-top: 105px;padding-left: 7px;color:white;}
 .score-info-2{color:black;font-weight: 600;background-color: white;border-radius: 5px;font-size: 22px;padding:8px;}
 .score-info{color:#ff5e57;font-weight: 600;background-color: black;border-radius: 5px;font-size: 22px;padding:8px;} 
-
+.score-next{color:#ff5e57;font-weight: 600;background-color: black;border-radius: 5px;font-size: 22px;padding:8px;}
+#Next_piece{width:100px;margin-left: 50px;}
+#tetris-prox{margin-left: 7px;} 
 /*main*/
 main{color:white;text-align: center;margin-top: 50px;height: 700px;}
 #img-tetris-rt{height:500px; margin-top: 100px}
@@ -24,7 +26,7 @@ section{margin-top: 100px;height:600px;}
 #table_rank{color:#ff5e57; font-weight: bold; text-align: center; letter-spacing: 1px;font-size:20px;}
 
 /*footer*/
-footer{height:50px;margin-top: 100px;background-color: black;}
+footer{height:50px;margin-top: 0px;background-color: black;}
 footer div{padding-top: 15px;font-weight: bold;}
 
 /*modal-forms*/
