@@ -83,28 +83,6 @@ function choice(gameover){
 }
 
 
-function choiceJogaNovamente(){
-    var tabTAM = prompt("DESEJA JOGAR NOVAMENTE?\n𝟭 - Tabuleiro Clássico \n𝟮 - Tabuleiro Personalizado");
-    if(tabTAM == 1){ //retorna as dimensões de cada tipo de tabuleiro
-        N_COL = 10;
-        N_ROW = 20;
-        /*cvs.width = 280;//tamanho do canva p/ este tabuleiro
-        cvs.width = 580;*/
-    }else{
-        N_COL = 22;
-        N_ROW = 44;
-        /*cvs.width = 500;//tamanho do canva p/ este tabuleiro
-        cvs.width = 1000;*/
-    }
-    for (let linha = 0; linha < N_ROW; linha++) {
-        tabuleiro[linha] = [];
-        for(let coluna = 0; coluna < N_COL; coluna++) {
-            tabuleiro[linha][coluna] = backgroundTab;
-        }
-    }
-    layoutTetris();
-    startTimer(); //inicia o cronomêtro
-}
 // ----------- Desenhar o tabuleiro (DrawBoard) ------------
 function layoutTetris() { 
     for (var linha = 0; linha < N_ROW; linha++) {
@@ -402,7 +380,30 @@ return format;
 
 }
 
+// ----------- Reiniciar Game  ------------
 function restartGame(){
-    choiceJogaNovamente();
+    choiceJogaNovamente();//função que solicita ao usuário possível reinicialização do game
 }
 
+function choiceJogaNovamente(){
+    var tabTAM = prompt("DESEJA JOGAR NOVAMENTE?\n𝟭 - Tabuleiro Clássico \n𝟮 - Tabuleiro Personalizado");
+    if(tabTAM == 1){ //retorna as dimensões de cada tipo de tabuleiro
+        N_COL = 10;
+        N_ROW = 20;
+        /*cvs.width = 280;//tamanho do canva p/ este tabuleiro
+        cvs.width = 580;*/
+    }else{
+        N_COL = 22;
+        N_ROW = 44;
+        /*cvs.width = 500;//tamanho do canva p/ este tabuleiro
+        cvs.width = 1000;*/
+    }
+    for (let linha = 0; linha < N_ROW; linha++) {
+        tabuleiro[linha] = [];
+        for(let coluna = 0; coluna < N_COL; coluna++) {
+            tabuleiro[linha][coluna] = backgroundTab;
+        }
+    }
+    layoutTetris();
+    startTimer(); //inicia o cronomêtro
+}
