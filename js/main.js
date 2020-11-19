@@ -3,17 +3,17 @@
 const scorePlayer = document.getElementById("score");//const usadas depois para setar os atributos
 const linesPlayer = document.getElementById("linhaseliminadas");
 const dificultPlayer = document.getElementById("dificuldade");
-const tamPecas = 20; //size peça in px
-const backgroundTab = "#2c3e50"; //fundo color tab
-const borderTab = "#ff5e57"; //bordar pra conseguir visualizar as peças e o size
+const backgroundTab = "#0a0b19"; //fundo color tab
+const borderTab = "red"; //bordar pra conseguir visualizar as peças e o size
 
 //------------- CANVAS ------------------
-var cvs = document.getElementById("rt");
+var cvs = document.getElementById("rolling_tetris");
 var context_tetris = cvs.getContext("2d");//declarando o efeito de jogo
 var nextCanvas = document.getElementById('Next_piece');
 var nextBlocks = nextCanvas.getContext("2d");
 
 // ----------- Variaveis do game ------------
+let tamPecas = 20; //size peça in px
 var N_ROW = 0;//tabuleiro dimensão
 var N_COL = 0;
 var tabuleiro = [];
@@ -63,13 +63,15 @@ function choice(gameover){
     if(tabTAM == 1){ //retorna as dimensões de cada tipo de tabuleiro
         N_COL = 10;
         N_ROW = 20;
-        /*cvs.width = 280;//tamanho do canva p/ este tabuleiro
-        cvs.width = 580;*/
+         //TAMANHO DESSE: WIDTH 200; 400 height;
+        
     }else{
         N_COL = 22;
         N_ROW = 44;
-        /*cvs.width = 500;//tamanho do canva p/ este tabuleiro
-        cvs.width = 1000;*/
+        cvs.setAttribute("height", "616");
+        cvs.setAttribute("width", "308");
+        tamPecas = 14;
+       //TAMANHO DESSE: WIDTH 440px; 880 height;
     }
 
     for (let linha = 0; linha < N_ROW; linha++) {

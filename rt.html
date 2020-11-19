@@ -29,11 +29,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
         integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous">
     </script>
+
+ 
     
     <title>Rooling Tetris</title>
 </head>
-
-<body style="background-image: url(img/Endless-Constellation.svg);overflow-x:hidden;" onload="choice()">
+<body style="background-color: #000000;" onload="choice()">
 
     <!--NAV -->
     <nav class="navbar navbar-expand-lg " id="edit">
@@ -58,41 +59,25 @@
         </div>
     </nav>
 
-    <!--SCORE JOGADOR-->
-    <header>
-        <div class="row">
-            <div class="col-xl-3 col-lg-6 col-sm-6 col-6 conjss-score" >
-                <span class="score-info">TEMPO DE PARTIDA:</span><span class="score-info-2" id="tempo">00:00</span>
-            </div>
-            <div class="col-xl-2 col-lg-6 col-sm-6 col-6 conjss-score">
-                <span class="score-info">SCORE:</span><span class="score-info-2" id="score">0</span>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-sm-6 col-6">
-                <span class="score-info">Nº LINHAS ELIMINADAS:</span><span class="score-info-2" id="linhaseliminadas">0</span>
-            </div>
-            <div class="col-xl-3 col-lg-6 col-sm-6 col-6">
-                <span class="score-info">NÍVEL DE DIFICULDADE:</span><span class="score-info-2" id="dificuldade">MÉDIO</span>
-            </div>         
-        </div>
-
-
-    </header>
-
-    <!--GAME-->
-   <div class="row">
-        <div class="col-xl-3 col-lg-6 col-sm-6 col-6" id="tetris-prox">
-            <span class="score-next">PRÓXIMA PEÇA:</span><br><br>
-            <canvas id="Next_piece" ></canvas>
-        </div>   
-        <canvas id="rt" width="500" height="950"></canvas>
+ <main id="gameState" class="stoped main" >   
+	<div class="grid">
+        <canvas id="rolling_tetris" class="game-board" height="400" width="200"></canvas>
+		<div class="right-column">
+			<div>
+				<p>Score: <span id="score">0</span></p>
+                <p>Level: <span id="level">0</span></p>
+                <p>Tempo de partida:  <span id="tempo">0</span></p>
+                <p>Linhas eliminadas: <span id="linhaseliminadas">0</span></p>
+                <p>Nivel de dificuldade: <span id="dificuldade">MÉDIO</span></p>
+                <canvas id="Next_piece" class="next"></canvas>
+			</div>	
+				<button onclick="choice()" class="play-button button">Play</button>
+		</div>
     </div>
-        <script src="js/main.js"></script>
     
-   
-    <!--INFO-BOOSTRAP-->
-    <footer class="text-white">
-        <div class="text-center">Utilizou-se do Bootstrap como framework de desenvolvimento</div>
-    </footer>
+     <!--JS TETRIS-->
+     <script src="js/main.js"></script>
+ </main>
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">
