@@ -84,6 +84,11 @@ function choice(){
             tabuleiro[linha][coluna] = backgroundTab;
         }
     }
+    
+}
+
+function start_game(){
+    choice();
     layoutTetris();
     startTimer(); //inicia o cronomêtro
     Movimentation();
@@ -164,7 +169,6 @@ function Movimentation() {
     
    
 }
-Movimentation();
 
 //Pintura de cada peça!!
 function fill_piece(color) { //Pintar a peça com uma cor.
@@ -309,7 +313,7 @@ function lock(){
             }
             else if(tetrominoes_obj.y_board + linha < 0){
                 //Se estiver acima do quadro, é pq deu gameover. (ROLLING TETRIS MUDAR!!).
-                gameOver();
+              gameOver();
                 break;
               
             }
@@ -394,10 +398,14 @@ return format;
 
 // ----------- Reiniciar Game  ------------
 function restartGame(){
-    choice();//função que solicita ao usuário possível reinicialização do game
+    start_game();//função que solicita ao usuário possível reinicialização do game
+   
 }
 
-
+function reiniciar_jogo(){
+    restartGame();
+    resetGame();
+}
 
 function gameOver() {
     let warning = confirm("Game over! Deseja Jogar Novamente?");
