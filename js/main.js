@@ -59,12 +59,15 @@ const tetrominoes = [[I,"#55E6C1"],[J,"#1B9CFC"], [L,"#ffcccc"],[O,"#32ff7e"],[T
 
 
 // ----------- Função para selecionar o tamanho do tabuleiro *fazer validação ------------
-function choice(gameover){
+function choice(){
     var tabTAM = prompt("𝗘𝗦𝗖𝗢𝗟𝗛𝗔 𝗢 𝗧𝗔𝗕𝗨𝗟𝗘𝗜𝗥𝗢 𝗤𝗨𝗘 𝗗𝗘𝗦𝗘𝗝𝗔 𝗝𝗢𝗚𝗔𝗥\n𝟭 - Tabuleiro Clássico \n𝟮 - Tabuleiro Personalizado");
     if(tabTAM == 1){ //retorna as dimensões de cada tipo de tabuleiro
         N_COL = 10;
         N_ROW = 20;
          //TAMANHO DESSE: WIDTH 200; 400 height;
+         cvs.setAttribute("height", "400");
+         cvs.setAttribute("width", "200");
+         tamPecas = 20;
         
     }else{
         N_COL = 22;
@@ -83,6 +86,7 @@ function choice(gameover){
     }
     layoutTetris();
     startTimer(); //inicia o cronomêtro
+    Movimentation();
 }
 
 
@@ -390,37 +394,10 @@ return format;
 
 // ----------- Reiniciar Game  ------------
 function restartGame(){
-    choiceJogaNovamente();//função que solicita ao usuário possível reinicialização do game
+    choice();//função que solicita ao usuário possível reinicialização do game
 }
 
-function choiceJogaNovamente(){
-    var tabTAM = prompt("ESCOLHA UM TABULEIRO PARA JOGAR NOVAMENTE?\n𝟭 - Tabuleiro Clássico \n𝟮 - Tabuleiro Personalizado");
-    if(tabTAM == 1){ //retorna as dimensões de cada tipo de tabuleiro
-        N_COL = 10;
-        N_ROW = 20;
-        cvs.setAttribute("height", "400");
-        cvs.setAttribute("width", "200");
-        tamPecas = 20;
-    }else{
-        N_COL = 22;
-        N_ROW = 44;
-        cvs.setAttribute("height", "616");
-        cvs.setAttribute("width", "308");
-        tamPecas = 14;
-        /*cvs.width = 500;//tamanho do canva p/ este tabuleiro
-        cvs.width = 1000;*/
-    }
-    for (let linha = 0; linha < N_ROW; linha++) {
-        tabuleiro[linha] = [];
-        for(let coluna = 0; coluna < N_COL; coluna++) {
-            tabuleiro[linha][coluna] = backgroundTab;
-        }
-    }
-    layoutTetris();
-    startTimer(); //inicia o cronomêtro
-    Movimentation();
-    
-}
+
 
 function gameOver() {
     let warning = confirm("Game over! Deseja Jogar Novamente?");
