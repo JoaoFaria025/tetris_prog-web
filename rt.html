@@ -34,7 +34,7 @@
     
     <title>Rooling Tetris</title>
 </head>
-<body style="background-color: #000000;" onload="choice()">
+<body style="background-color: #000000;">
 
     <!--NAV -->
     <nav class="navbar navbar-expand-lg " id="edit">
@@ -64,14 +64,15 @@
         <canvas id="rolling_tetris" class="game-board" height="400" width="200"></canvas>
 		<div class="right-column">
 			<div>
-				<p>Score: <span id="score">0</span></p>
-                <p>Level: <span id="level">0</span></p>
-                <p>Tempo de partida:  <span id="tempo">0</span></p>
-                <p>Linhas eliminadas: <span id="linhaseliminadas">0</span></p>
-                <p>Nivel de dificuldade: <span id="dificuldade">MÉDIO</span></p>
+				<p><span class="info-player">Score:</span><span id="score" class="info-player-nums">0</span></p>
+                <p><span class="info-player">Nível de dificuldade:</span> <span id="level" class="info-player-nums">0</span></p>
+                <p><span class="info-player">Tempo de partida:</span> <span id="tempo" class="info-player-nums">0</span></p>
+                <p><span class="info-player">Linhas eliminadas:</span><span id="linhaseliminadas" class="info-player-nums">0</span></p>
+                <p><span class="info-player">Nível de dificuldade:</span><span id="dificuldade" class="info-player-nums">MÉDIO</span></p>
                 <canvas id="Next_piece" class="next"></canvas>
 			</div>	
-				<button onclick="choice()" class="play-button button">Play</button>
+                <button onclick="choice()" class="play-button button">Play</button>
+                <button onclick="choice()" id="restart-btn" class="restart-button button">Reiniciar Game</button>
 		</div>
     </div>
     

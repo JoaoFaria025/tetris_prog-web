@@ -11,7 +11,7 @@ var cvs = document.getElementById("rolling_tetris");
 var context_tetris = cvs.getContext("2d");//declarando o efeito de jogo
 var nextCanvas = document.getElementById('Next_piece');
 var nextBlocks = nextCanvas.getContext("2d");
-
+document.getElementById("restart-btn").style.display = "none";
 // ----------- Variaveis do game ------------
 let tamPecas = 20; //size peça in px
 var N_ROW = 0;//tabuleiro dimensão
@@ -58,7 +58,7 @@ const tetrominoes = [[I,"#55E6C1"],[J,"#1B9CFC"], [L,"#ffcccc"],[O,"#32ff7e"],[T
 
 
 // ----------- Função para selecionar o tamanho do tabuleiro *fazer validação ------------
-function choice(gameover){
+function choice(){
     var tabTAM = prompt("𝗘𝗦𝗖𝗢𝗟𝗛𝗔 𝗢 𝗧𝗔𝗕𝗨𝗟𝗘𝗜𝗥𝗢 𝗤𝗨𝗘 𝗗𝗘𝗦𝗘𝗝𝗔 𝗝𝗢𝗚𝗔𝗥\n𝟭 - Tabuleiro Clássico \n𝟮 - Tabuleiro Personalizado");
     if(tabTAM == 1){ //retorna as dimensões de cada tipo de tabuleiro
         N_COL = 10;
@@ -300,8 +300,9 @@ function lock(){
                 //Se estiver acima do quadro, é pq deu gameover. (ROLLING TETRIS MUDAR!!).
                // gameOver();
                gameOver = true;
+               /*
                alert("Você perdeu :(");
-               restartGame();
+               restartGame();*/
                 break;
             }
             else{
@@ -384,6 +385,7 @@ return format;
 
 // ----------- Reiniciar Game  ------------
 function restartGame(){
+
     choiceJogaNovamente();//função que solicita ao usuário possível reinicialização do game
 }
 
@@ -408,4 +410,8 @@ function choiceJogaNovamente(){
     }
     layoutTetris();
     startTimer(); //inicia o cronomêtro
+}
+// ----------- Habilita Botão Reinciar Game ------------
+function habilitaRestart(){
+    document.getElementById("restart-btn").style.display = "inline";
 }
