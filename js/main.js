@@ -398,12 +398,15 @@ function choiceJogaNovamente(){
     if(tabTAM == 1){ //retorna as dimensões de cada tipo de tabuleiro
         N_COL = 10;
         N_ROW = 20;
-
-        /*cvs.width = 280;//tamanho do canva p/ este tabuleiro
-        cvs.width = 580;*/
+        cvs.setAttribute("height", "400");
+        cvs.setAttribute("width", "200");
+        tamPecas = 20;
     }else{
         N_COL = 22;
         N_ROW = 44;
+        cvs.setAttribute("height", "616");
+        cvs.setAttribute("width", "308");
+        tamPecas = 14;
         /*cvs.width = 500;//tamanho do canva p/ este tabuleiro
         cvs.width = 1000;*/
     }
@@ -432,6 +435,7 @@ function gameOver() {
 }
 
 function resetGame() {
+    stopTimer();
     canMove = true;
     speed = 500;
     dropStart = Date.now();
