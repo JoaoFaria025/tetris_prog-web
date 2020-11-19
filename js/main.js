@@ -58,7 +58,7 @@ const tetrominoes = [[I,"#55E6C1"],[J,"#1B9CFC"], [L,"#ffcccc"],[O,"#32ff7e"],[T
 
 
 // ----------- Função para selecionar o tamanho do tabuleiro *fazer validação ------------
-function choice(){
+function choice(gameover){
     var tabTAM = prompt("𝗘𝗦𝗖𝗢𝗟𝗛𝗔 𝗢 𝗧𝗔𝗕𝗨𝗟𝗘𝗜𝗥𝗢 𝗤𝗨𝗘 𝗗𝗘𝗦𝗘𝗝𝗔 𝗝𝗢𝗚𝗔𝗥\n𝟭 - Tabuleiro Clássico \n𝟮 - Tabuleiro Personalizado");
     if(tabTAM == 1){ //retorna as dimensões de cada tipo de tabuleiro
         N_COL = 10;
@@ -83,6 +83,28 @@ function choice(){
 }
 
 
+function choiceJogaNovamente(){
+    var tabTAM = prompt("DESEJA JOGAR NOVAMENTE?\n𝟭 - Tabuleiro Clássico \n𝟮 - Tabuleiro Personalizado");
+    if(tabTAM == 1){ //retorna as dimensões de cada tipo de tabuleiro
+        N_COL = 10;
+        N_ROW = 20;
+        /*cvs.width = 280;//tamanho do canva p/ este tabuleiro
+        cvs.width = 580;*/
+    }else{
+        N_COL = 22;
+        N_ROW = 44;
+        /*cvs.width = 500;//tamanho do canva p/ este tabuleiro
+        cvs.width = 1000;*/
+    }
+    for (let linha = 0; linha < N_ROW; linha++) {
+        tabuleiro[linha] = [];
+        for(let coluna = 0; coluna < N_COL; coluna++) {
+            tabuleiro[linha][coluna] = backgroundTab;
+        }
+    }
+    layoutTetris();
+    startTimer(); //inicia o cronomêtro
+}
 // ----------- Desenhar o tabuleiro (DrawBoard) ------------
 function layoutTetris() { 
     for (var linha = 0; linha < N_ROW; linha++) {
@@ -298,7 +320,8 @@ function lock(){
                 //Se estiver acima do quadro, é pq deu gameover. (ROLLING TETRIS MUDAR!!).
                // gameOver();
                gameOver = true;
-               alert("Você perdeu :(")
+               alert("Você perdeu :(");
+               restartGame();
                 break;
             }
             else{
@@ -379,4 +402,7 @@ return format;
 
 }
 
+function restartGame(){
+    choiceJogaNovamente();
+}
 
