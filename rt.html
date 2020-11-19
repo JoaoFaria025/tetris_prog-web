@@ -72,7 +72,7 @@
                 <canvas id="Next_piece" class="next"></canvas>
 			</div>	
             <button  class="play-button button" onclick="start_game()">Play</button>
-             <button onclick="reiniciar_jogo()" id="restart-btn" class="restart-button button">Reiniciar Game</button>
+             <button  data-toggle="modal" data-target="#reiniciar_jogo" id="restart-btn" class="restart-button button">Reiniciar Game</button>
 		</div>
     </div>
     
@@ -159,6 +159,19 @@
 
 </body>
 
-
+<!-- MODAL Reiniciar o Jogo  -->
+<div class="modal fade" id="reiniciar_jogo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header bg-danger text-white">
+            <h5 class="modal-title" id="exampleModalLongTitle">Deseja mesmo reiniciar o jogo?</h5>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-danger"  onclick="reiniciar_jogo()">Confirmar</button> 
+            <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
+        </div>
+        </div>
+    </div>
+    </div>
 
 </html>
