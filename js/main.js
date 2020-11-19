@@ -425,14 +425,13 @@ function resetGame() {
     speed = 500;
     dropStart = Date.now();
     score = 0;
-     count_line = 0;
+    count_line = 0;
     minutes = 0;
     seconds = 0;
     timerMilesimos = 1000; 
     timerPlayer = 0;
     qtdLinhas = 0; 
     sequenciaLinhas = 0;
-    tabuleiro[linha] = [];
     for ( linha = 0; linha < N_ROW; linha++) {
         tabuleiro[linha] = [];
         for( coluna = 0; coluna < N_COL; coluna++) {
