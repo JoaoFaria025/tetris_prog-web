@@ -25,7 +25,8 @@ var minutes = 0;
 var seconds = 0;
 var timerMilesimos = 1000; //1 segundo tem 1000 milésimos
 var timerPlayer = 0;
-var qtdLinhas = 0; //Cria variável que conta a quantidade de linhas eliminadas
+var qtdLinhas = 0; //conta a quantidade de linhas eliminadas
+var sequenciaLinhas = 0; //sequencia de linhas eliminadas de uma vez so (para calculo da pontuacao bonus)
 
 // ----------- Classe PECAS------------
 
@@ -244,11 +245,9 @@ document.onkeydown = function (e) {
             break;
         case 'ArrowLeft':
             moveLeft();
-            dropStart = Date.now();
             break;
         case 'ArrowRight':
             moveRight();
-            dropStart = Date.now();
         }
 };
 
@@ -307,7 +306,46 @@ function lock(){
             }
         }
     }
+    verificarLinha();
+    atualizarScore();
     layoutTetris();
+}
+
+// SCORE E REMOVER LINHAS 
+function verificarLinha() { //verificar linhas do tabuleiro
+    sequenciaLinhas = 0;
+    for (let linha = 0; linha < N_ROW; linha++) {
+        let linhaCompleta = true; //variavel que representa se a linha esta completa
+        for (let coluna = 0; coluna < N_COL; coluna++){
+            const corQuadrado = tabuleiro[linha][coluna]; 
+            linhaCompleta = linhaCompleta && (corQuadrado !== backgroundTab) //verifica se a linha esta completa
+        }
+        if (linhaCompleta){ //se a linha estiver completa
+            sequenciaLinhas++;
+            atualizarLinha(linha); //atualiza linha (elimina)
+            contLinhas(); //atualiza a quantidade de linhas eliminadas no placar
+        }
+    }
+}
+function atualizarLinha(linha){ //atualizar caso tenha uma linha completa (deletar a mesma) e somar no score
+    for (let y = linha; y > 1; y--){
+        for (let coluna = 0; coluna < N_COL; coluna++){
+            tabuleiro[y][coluna] = tabuleiro[y - 1][coluna]; //remove a linha
+        }
+    }
+    for (let coluna = 0; coluna < N_COL; coluna++){
+        tabuleiro[0][coluna] = backgroundTab; //'pintando' a primeira linha
+    }
+}
+function contLinhas() { //mostra a quantidade total de linhas eliminadas
+    qtdLinhas++;
+    var mostrarLinhas = qtdLinhas.toString();
+    document.getElementById('linhaseliminadas').innerHTML = mostrarLinhas;
+}
+function atualizarScore() { //atualiza o placar de pontuacao
+    score += (sequenciaLinhas*10) * sequenciaLinhas; //numero de linhas eliminadas * 10 pontos * (bonus)
+    var mostrarScore = score.toString();
+    document.getElementById('score').innerHTML = mostrarScore;
 }
 
 // TEMPORIZADOR JOGO 
@@ -340,35 +378,5 @@ document.getElementById('tempo').innerText = format;
 return format;
 
 }
-// SCORE E REMOVER LINHAS 
-function atualizarLinhaScore(N_ROW){ //atualizar caso tenha uma linha completa (deletar a mesma) e somar no score
-    var linhasExcluidas = 0;
-    for (let y = N_ROW; y > 1; y--){
-        for (let coluna = 0; coluna < N_COL; coluna++){
-            removerLinha(y, coluna) //diminuir linha atual (remover linha)
-            contLinhas();
-            linhasExcluidas++;
-        }
-    }
-    for (let coluna = 0; coluna < N_COL; coluna++){
-        tabuleiro[0][coluna] = backgroundTab; //'pintando' a primeira linha
-    }
-    if (linhasExcluidas > 0) { //se tiver linha completa, atualizar score
-        score += (linhasExcluidas*10)*linhasExcluidas; //numero de linhas excluidas * 10 pontos * (bonus)
-        var contadorScore = score.toString();
-        document.getElementById('score').innerHTML = contadorScore;
-    } 
-}
-function removerLinha(linhaaRemover, colunaaRemover) {
-    tabuleiro[linhaaRemover][coluna] = tabuleiro[linhaaRemover - 1][coluna];
-}
-function contLinhas() {
-    qtdLinhas++;
-    var contadorLinhas = qtdLinhas.toString();
-    document.getElementById('linhaseliminadas').innerHTML = contadorLinhas;
-}
-
-
-
 
 
