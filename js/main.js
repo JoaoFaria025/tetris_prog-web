@@ -403,8 +403,8 @@ function restartGame(){
 }
 
 function reiniciar_jogo(){
-    restartGame();
-    resetGame();
+    window.location.reload(true);
+
 }
 
 function gameOver() {
