@@ -11,8 +11,9 @@ var cvs = document.getElementById("rolling_tetris");
 var context_tetris = cvs.getContext("2d");//declarando o efeito de jogo
 var nextCanvas = document.getElementById('Next_piece');
 var nextBlocks = nextCanvas.getContext("2d");
-document.getElementById("restart-btn").style.display = "none";
+
 // ----------- Variaveis do game ------------
+let canMove = true;
 let tamPecas = 20; //size peça in px
 var N_ROW = 0;//tabuleiro dimensão
 var N_COL = 0;
@@ -58,7 +59,7 @@ const tetrominoes = [[I,"#55E6C1"],[J,"#1B9CFC"], [L,"#ffcccc"],[O,"#32ff7e"],[T
 
 
 // ----------- Função para selecionar o tamanho do tabuleiro *fazer validação ------------
-function choice(){
+function choice(gameover){
     var tabTAM = prompt("𝗘𝗦𝗖𝗢𝗟𝗛𝗔 𝗢 𝗧𝗔𝗕𝗨𝗟𝗘𝗜𝗥𝗢 𝗤𝗨𝗘 𝗗𝗘𝗦𝗘𝗝𝗔 𝗝𝗢𝗚𝗔𝗥\n𝟭 - Tabuleiro Clássico \n𝟮 - Tabuleiro Personalizado");
     if(tabTAM == 1){ //retorna as dimensões de cada tipo de tabuleiro
         N_COL = 10;
@@ -153,7 +154,9 @@ function Movimentation() {
     }
     if(!gameOver){
         requestAnimationFrame(Movimentation);
+       
     }
+    
     
    
 }
@@ -238,6 +241,9 @@ Pecas.prototype.rodar = function(){
 }
     
 document.onkeydown = function (e) {
+    if(!canMove){
+        return false;
+    }
     switch (e.key) {
         case 'ArrowUp':
             tetrominoes_obj.rodar();
@@ -290,6 +296,7 @@ function CheckCollision(row, col, futurePiece) {
 //Travar as peças quando colidir
 
 function lock(){
+    canMove = false;
     for(var linha = 0; linha < tetrominoes_obj.activePeca.length; linha++){
         for(var coluna = 0; coluna < tetrominoes_obj.activePeca.length; coluna++){
             if(tetrominoes_obj.activePeca[linha][coluna] == 0 ){ 
@@ -298,12 +305,9 @@ function lock(){
             }
             else if(tetrominoes_obj.y_board + linha < 0){
                 //Se estiver acima do quadro, é pq deu gameover. (ROLLING TETRIS MUDAR!!).
-               // gameOver();
-               gameOver = true;
-               
-               alert("Você perdeu :(");
-               restartGame();
+                gameOver();
                 break;
+              
             }
             else{
             tabuleiro[tetrominoes_obj.y_board + linha][tetrominoes_obj.x_board + coluna]  = tetrominoes_obj.color;
@@ -313,6 +317,7 @@ function lock(){
     verificarLinha();
     atualizarScore();
     layoutTetris();
+    canMove = true;
 }
 
 // SCORE E REMOVER LINHAS 
@@ -385,15 +390,15 @@ return format;
 
 // ----------- Reiniciar Game  ------------
 function restartGame(){
-
     choiceJogaNovamente();//função que solicita ao usuário possível reinicialização do game
 }
 
 function choiceJogaNovamente(){
-    var tabTAM = prompt("DESEJA JOGAR NOVAMENTE?\n𝟭 - Tabuleiro Clássico \n𝟮 - Tabuleiro Personalizado");
+    var tabTAM = prompt("ESCOLHA UM TABULEIRO PARA JOGAR NOVAMENTE?\n𝟭 - Tabuleiro Clássico \n𝟮 - Tabuleiro Personalizado");
     if(tabTAM == 1){ //retorna as dimensões de cada tipo de tabuleiro
         N_COL = 10;
         N_ROW = 20;
+
         /*cvs.width = 280;//tamanho do canva p/ este tabuleiro
         cvs.width = 580;*/
     }else{
@@ -410,8 +415,41 @@ function choiceJogaNovamente(){
     }
     layoutTetris();
     startTimer(); //inicia o cronomêtro
+    Movimentation();
+    
 }
-// ----------- Habilita Botão Reinciar Game ------------
-function habilitaRestart(){
-    document.getElementById("restart-btn").style.display = "inline";
+
+function gameOver() {
+    let warning = confirm("Game over! Deseja Jogar Novamente?");
+
+    if (warning) {
+        restartGame();
+        resetGame();
+    }
+    else{
+        alert("a")
+    }
+}
+
+function resetGame() {
+    canMove = true;
+    speed = 500;
+    dropStart = Date.now();
+    score = 0;
+     count_line = 0;
+    minutes = 0;
+    seconds = 0;
+    timerMilesimos = 1000; 
+    timerPlayer = 0;
+    qtdLinhas = 0; 
+    sequenciaLinhas = 0;
+    tabuleiro[linha] = [];
+    for ( linha = 0; linha < N_ROW; linha++) {
+        tabuleiro[linha] = [];
+        for( coluna = 0; coluna < N_COL; coluna++) {
+            tabuleiro[linha][coluna] = backgroundTab;
+        }
+    }
+   
+   
 }
