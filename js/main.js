@@ -300,9 +300,9 @@ function lock(){
                 //Se estiver acima do quadro, é pq deu gameover. (ROLLING TETRIS MUDAR!!).
                // gameOver();
                gameOver = true;
-               /*
+               
                alert("Você perdeu :(");
-               restartGame();*/
+               restartGame();
                 break;
             }
             else{
