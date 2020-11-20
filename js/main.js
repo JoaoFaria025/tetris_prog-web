@@ -15,7 +15,7 @@ let tamPecas = 20; //size peça in px
 var N_ROW = 0;//tabuleiro dimensão
 var N_COL = 0;
 var tabuleiro = [];
-let speed_peca= 500;
+let speed_peca= 400;
 let dropStart = Date.now();//Frame atual do usuário inicial.
 let score = 0;
 let count_line = 0;
@@ -161,6 +161,16 @@ function Movimentation() {
     }
     if(!gameOver){
         requestAnimationFrame(Movimentation);
+        
+        if(score>=300){
+            speed_peca = 150;
+        }
+        if(score>=600){
+            speed_peca = 100;
+        }
+        if(score>=900){
+            speed_peca= 50;
+        }
        
     }
     
