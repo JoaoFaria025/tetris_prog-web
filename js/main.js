@@ -1,7 +1,4 @@
-
 //------------- Constantes ------------------
-const scorePlayer = document.getElementById("score");//const usadas depois para setar os atributos
-const linesPlayer = document.getElementById("linhaseliminadas");
 const dificultPlayer = document.getElementById("dificuldade");
 const backgroundTab = "#0a0b19"; //fundo color tab
 const borderTab = "red"; //bordar pra conseguir visualizar as peças e o size
@@ -90,6 +87,7 @@ function choice(){
 function start_game(){
     choice();
     layoutTetris();
+    setScoreLine(); //seta o score (0) e linhas eliminadas (0)
     startTimer(); //inicia o cronomêtro
     Movimentation();
 }
@@ -399,13 +397,11 @@ return format;
 // ----------- Reiniciar Game  ------------
 function restartGame(){
     start_game();//função que solicita ao usuário possível reinicialização do game
-   
 }
 
 function reiniciar_jogo(){
     window.location.reload(true);
-
-}
+    }
 
 function gameOver() {
     let warning = confirm("Game over! Deseja Jogar Novamente?");
@@ -426,7 +422,7 @@ function resetGame() {
     speed = 500;
     dropStart = Date.now();
     score = 0;
-     count_line = 0;
+    count_line = 0;
     minutes = 0;
     seconds = 0;
     timerMilesimos = 1000; 
@@ -440,6 +436,13 @@ function resetGame() {
             tabuleiro[linha][coluna] = backgroundTab;
         }
     }
-   
-   
+}
+
+function setScoreLine() {
+    score = 0;
+    qtdLinhas = 0;
+    var zerar = qtdLinhas.toString();
+    document.getElementById('linhaseliminadas').innerHTML = zerar;
+    var zerar = score.toString();
+    document.getElementById('score').innerHTML = zerar;
 }
