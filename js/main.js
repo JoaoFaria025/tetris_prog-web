@@ -172,24 +172,48 @@ function Movimentation() {
     }
     if(!gameOver){
         requestAnimationFrame(Movimentation);
-        
-        if(score>=300){
-            speed_peca = 200;
-            document.getElementById("dificuldade").innerHTML="Normal"
+        if(tamPecas == 20){
+            speed_peca_tab_pequeno();
         }
-        if(score>=600){
-            speed_peca = 100;
-            document.getElementById("dificuldade").innerHTML="Difícil"
+        if (tamPecas == 14){
+            speed_peca_tab_grande();
         }
-        if(score>=900){
-            speed_peca= 80;
-            document.getElementById("dificuldade").innerHTML="Expert"
-        }
+
        
     }
     
     
    
+}
+
+function speed_peca_tab_pequeno(){
+    if(score>=300){
+        speed_peca = 200;
+        document.getElementById("dificuldade").innerHTML="Normal"
+    }
+    if(score>=600){
+        speed_peca = 100;
+        document.getElementById("dificuldade").innerHTML="Difícil"
+    }
+    if(score>=1200){
+        speed_peca= 80;
+        document.getElementById("dificuldade").innerHTML="Expert"
+    }
+}
+
+function speed_peca_tab_grande(){
+    if(score>=300){
+        speed_peca = 100;
+        document.getElementById("dificuldade").innerHTML="Normal"
+    }
+    if(score>=600){
+        speed_peca = 70;
+        document.getElementById("dificuldade").innerHTML="Difícil"
+    }
+    if(score>=1200){
+        speed_peca= 50;
+        document.getElementById("dificuldade").innerHTML="Expert"
+    }
 }
 
 //Pintura de cada peça!!
@@ -442,8 +466,9 @@ function gameOver() {
 
 function resetGame() {
     stopTimer();
+    speed_peca = 400;
+    document.getElementById("dificuldade").innerHTML="Fácil"
     canMove = true;
-    speed = 500;
     dropStart = Date.now();
     score = 0;
     count_line = 0;
