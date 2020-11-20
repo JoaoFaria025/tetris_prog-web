@@ -68,10 +68,10 @@
                 <p><span class="info-player">Nível de dificuldade:</span> <span id="level" class="info-player-nums">0</span></p>
                 <p><span class="info-player">Tempo de partida:</span> <span id="tempo" class="info-player-nums">0</span></p>
                 <p><span class="info-player">Linhas eliminadas:</span><span id="linhaseliminadas" class="info-player-nums">0</span></p>
-                <p><span class="info-player">Nível de dificuldade:</span><span id="dificuldade" class="info-player-nums">Fácil</span></p>
+                <p><span class="info-player">Nível de dificuldade:</span><span id="dificuldade" class="info-player-nums">MÉDIO</span></p>
                 <canvas id="Next_piece" class="next"></canvas>
 			</div>	
-            <button  class="play-button button" onclick="start_game()">Play</button>
+            <button  class="play-button button" id="play-btn" onclick="start_game()">Play</button>
              <button  data-toggle="modal" data-target="#reiniciar_jogo" id="restart-btn" class="restart-button button">Reiniciar Game</button>
 		</div>
     </div>
@@ -155,20 +155,40 @@
     </div>
 
 </body>
-
-<!-- MODAL Reiniciar o Jogo  -->
-<div class="modal fade" id="reiniciar_jogo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  
+    <!-- MODAL Reiniciar o Jogo  -->
+    <div class="modal fade" id="reiniciar_jogo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="exampleModalLongTitle">Deseja mesmo reiniciar o jogo?</h5>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-danger"  onclick="reiniciar_jogo()">Confirmar</button> 
+                <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
+            </div>
+            </div>
+        </div>
+        </div>
+  <!-- Modal Escolher Game -->
+  <div class="modal fade" id="escolher_game" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-        <div class="modal-header bg-danger text-white">
-            <h5 class="modal-title" id="exampleModalLongTitle">Deseja mesmo reiniciar o jogo?</h5>
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"><b>Seja bem vindo ao Rolling Tetris!</b></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+        Olá, para acessar o jogo selecione o tamanho do tetris.<br>Para reiniciar o jogo é só clicar no botão <i>Reiniciar Game</i> e logo em seguida clicar no botão <i>Play</i>
         </div>
         <div class="modal-footer">
-        <button type="button" class="btn btn-danger"  onclick="reiniciar_jogo()">Confirmar</button> 
-            <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
-        </div>
+        <button type="button" class="btn btn-secondary" onclick="escolher_tetris(1)">Rolling Tetris (10x20)</button>
+        <button type="button" class="btn btn-primary" onclick="escolher_tetris(2)">Rolling Tetris (22x44)</button>
         </div>
     </div>
     </div>
+</div>
 
 </html>

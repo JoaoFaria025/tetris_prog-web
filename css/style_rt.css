@@ -69,6 +69,7 @@ canvas#Next_piece {padding-top: 40px;padding-left: 30px;padding-right: 10px;bord
 #title-forms{color:white;}
 #texto-contato{margin-top: 100px; margin-left: 100px;}
 .form-label {font-size: 18px;color: black;float:left;}
+#escolher_game{color:black;}
 
 /*TETRIS - INFO JOGADOR*/
 .info-player{color:#ff5e57;font-weight: 600;border:1px solid white;border-radius: 5px;font-size: 19px;padding:5px;margin-right:5px;}

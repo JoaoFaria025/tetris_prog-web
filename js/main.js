@@ -52,7 +52,7 @@ const T = [ [[0, 1, 0],[1, 1, 1],[0, 0, 0]],[[0, 1, 0],[0, 1, 1],[0, 1, 0]],[[0,
 const U = [ [[1, 0, 1],[1, 1, 1],[0, 0, 0]], [ [0, 1, 1],[0, 1, 0],[0, 1, 1]], [ [0, 0, 0],[1, 1, 1],[1, 0, 1]], [ [1, 1, 0],[0, 1, 0],[1, 1, 0]]];
 //Peças e suas cores.
 const tetrominoes = [[I,"#55E6C1"],[J,"#1B9CFC"], [L,"#ffcccc"],[O,"#32ff7e"],[T,"#c23616"],[U,"#ffffff"]];
-
+desabilitaRestart();
 
 
 // ----------- Função para selecionar o tamanho do tabuleiro *fazer validação ------------
@@ -65,6 +65,8 @@ function choice(){
          cvs.setAttribute("height", "400");
          cvs.setAttribute("width", "200");
          tamPecas = 20;
+         desabilitaPlay();
+         habilitaRestart();
         
     }else{
         N_COL = 22;
@@ -73,6 +75,8 @@ function choice(){
         cvs.setAttribute("width", "308");
         tamPecas = 14;
        //TAMANHO DESSE: WIDTH 440px; 880 height;
+       desabilitaPlay();
+       habilitaRestart();
     }
 
     for (let linha = 0; linha < N_ROW; linha++) {
@@ -458,4 +462,15 @@ function setScoreLine() {
     document.getElementById('linhaseliminadas').innerHTML = zerar;
     var zerar = score.toString();
     document.getElementById('score').innerHTML = zerar;
+}
+
+function desabilitaPlay(){
+    $("#play-btn").hide();
+}
+
+function desabilitaRestart(){
+    $("#restart-btn").hide();
+}
+function habilitaRestart(){
+    $("#restart-btn").show();
 }
