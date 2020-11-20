@@ -25,7 +25,7 @@ var timerMilesimos = 1000; //1 segundo tem 1000 milésimos
 var timerPlayer = 0;
 var qtdLinhas = 0; //conta a quantidade de linhas eliminadas
 var sequenciaLinhas = 0; //sequencia de linhas eliminadas de uma vez so (para calculo da pontuacao bonus)
-
+var valor_tab_atual =0;
 // ----------- Classe PECAS------------
 
 class Pecas{
@@ -96,6 +96,7 @@ function choice(valor){
 }
 
 function start_game(valor){
+    valor_tab_atual = valor;
     choice(valor);
     layoutTetris();
     setScoreLine(); //seta o score (0) e linhas eliminadas (0)
@@ -443,8 +444,8 @@ return format;
 }
 
 // ----------- Reiniciar Game  ------------
-function restartGame(){
-    start_game();//função que solicita ao usuário possível reinicialização do game
+function restartGame(valor){
+    start_game(valor);//função que solicita ao usuário possível reinicialização do game
 }
 
 function reiniciar_jogo(){
@@ -455,7 +456,7 @@ function gameOver() {
     let warning = confirm("Game over! Deseja Jogar Novamente?");
 
     if (warning) {
-        restartGame();
+        restartGame(valor_tab_atual);
         resetGame();
     }
     else{
