@@ -56,10 +56,10 @@ desabilitaRestart();
 
 
 // ----------- Função para selecionar o tamanho do tabuleiro *fazer validação ------------
-function choice(){
+function choice(valor){
+   
     try{//try p/ verificar exceções
-        var tabTAM = prompt("𝗘𝗦𝗖𝗢𝗟𝗛𝗔 𝗢 𝗧𝗔𝗕𝗨𝗟𝗘𝗜𝗥𝗢 𝗤𝗨𝗘 𝗗𝗘𝗦𝗘𝗝𝗔 𝗝𝗢𝗚𝗔𝗥\n𝟭 - Tabuleiro Clássico \n𝟮 - Tabuleiro Personalizado");
-    if(tabTAM == 1){ //retorna as dimensões de cada tipo de tabuleiro
+    if(valor == 1){ //retorna as dimensões de cada tipo de tabuleiro
         N_COL = 10;
         N_ROW = 20;
          //TAMANHO DESSE: WIDTH 200; 400 height;
@@ -69,7 +69,7 @@ function choice(){
          desabilitaPlay();
          habilitaRestart();
         
-    }else if(tabTAM == 2){
+    }else if(valor == 2){
         N_COL = 22;
         N_ROW = 44;
         cvs.setAttribute("height", "616");
@@ -95,8 +95,8 @@ function choice(){
     
 }
 
-function start_game(){
-    choice();
+function start_game(valor){
+    choice(valor);
     layoutTetris();
     setScoreLine(); //seta o score (0) e linhas eliminadas (0)
     startTimer(); //inicia o cronomêtro

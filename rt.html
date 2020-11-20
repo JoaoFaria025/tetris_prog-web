@@ -70,7 +70,7 @@
                 <p><span class="info-player">Nível de dificuldade:</span><span id="dificuldade" class="info-player-nums">Fácil</span></p>
                 <canvas id="Next_piece" class="next"></canvas>
 			</div>	
-            <button  class="play-button button" id="play-btn" onclick="start_game()">Play</button>
+            <button  class="play-button button"  data-toggle="modal" data-target="#escolher_game" id="play-btn" >Play</button>
              <button  data-toggle="modal" data-target="#reiniciar_jogo" id="restart-btn" class="restart-button button">Reiniciar Game</button>
 		</div>
     </div>
@@ -183,11 +183,13 @@
         Olá, para acessar o jogo selecione o tamanho do tetris.<br>Para reiniciar o jogo é só clicar no botão <i>Reiniciar Game</i> e logo em seguida clicar no botão <i>Play</i>
         </div>
         <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" onclick="escolher_tetris(1)">Rolling Tetris (10x20)</button>
-        <button type="button" class="btn btn-primary" onclick="escolher_tetris(2)">Rolling Tetris (22x44)</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="start_game(1)">Rolling Tetris (10x20)</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="start_game(2)">Rolling Tetris (22x44)</button>
         </div>
     </div>
     </div>
 </div>
+
+
 
 </html>
