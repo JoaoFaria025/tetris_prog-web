@@ -164,12 +164,15 @@ function Movimentation() {
         
         if(score>=300){
             speed_peca = 150;
+            document.getElementById("dificuldade").innerHTML="Normal"
         }
         if(score>=600){
             speed_peca = 100;
+            document.getElementById("dificuldade").innerHTML="Difícil"
         }
         if(score>=900){
             speed_peca= 50;
+            document.getElementById("dificuldade").innerHTML="Expert"
         }
        
     }
