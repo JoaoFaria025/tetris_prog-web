@@ -163,7 +163,7 @@ function Movimentation() {
         requestAnimationFrame(Movimentation);
         
         if(score>=300){
-            speed_peca = 150;
+            speed_peca = 200;
             document.getElementById("dificuldade").innerHTML="Normal"
         }
         if(score>=600){
@@ -171,7 +171,7 @@ function Movimentation() {
             document.getElementById("dificuldade").innerHTML="Difícil"
         }
         if(score>=900){
-            speed_peca= 50;
+            speed_peca= 80;
             document.getElementById("dificuldade").innerHTML="Expert"
         }
        
