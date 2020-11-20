@@ -57,7 +57,8 @@ desabilitaRestart();
 
 // ----------- Função para selecionar o tamanho do tabuleiro *fazer validação ------------
 function choice(){
-    var tabTAM = prompt("𝗘𝗦𝗖𝗢𝗟𝗛𝗔 𝗢 𝗧𝗔𝗕𝗨𝗟𝗘𝗜𝗥𝗢 𝗤𝗨𝗘 𝗗𝗘𝗦𝗘𝗝𝗔 𝗝𝗢𝗚𝗔𝗥\n𝟭 - Tabuleiro Clássico \n𝟮 - Tabuleiro Personalizado");
+    try{//try p/ verificar exceções
+        var tabTAM = prompt("𝗘𝗦𝗖𝗢𝗟𝗛𝗔 𝗢 𝗧𝗔𝗕𝗨𝗟𝗘𝗜𝗥𝗢 𝗤𝗨𝗘 𝗗𝗘𝗦𝗘𝗝𝗔 𝗝𝗢𝗚𝗔𝗥\n𝟭 - Tabuleiro Clássico \n𝟮 - Tabuleiro Personalizado");
     if(tabTAM == 1){ //retorna as dimensões de cada tipo de tabuleiro
         N_COL = 10;
         N_ROW = 20;
@@ -68,7 +69,7 @@ function choice(){
          desabilitaPlay();
          habilitaRestart();
         
-    }else{
+    }else if(tabTAM == 2){
         N_COL = 22;
         N_ROW = 44;
         cvs.setAttribute("height", "616");
@@ -77,6 +78,8 @@ function choice(){
        //TAMANHO DESSE: WIDTH 440px; 880 height;
        desabilitaPlay();
        habilitaRestart();
+    }else{//caso digite qualquer coisa diferente de 1 e 2
+        return e;
     }
 
     for (let linha = 0; linha < N_ROW; linha++) {
@@ -85,6 +88,10 @@ function choice(){
             tabuleiro[linha][coluna] = backgroundTab;
         }
     }
+    }catch(e){//exibe um alery
+        alert(e + "-- 𝗱𝗶𝗴𝗶𝘁𝗲 𝘂𝗺𝗮 𝗲𝗻𝘁𝗿𝗮𝗱𝗮 𝘃𝗮𝗹𝗶𝗱𝗮")
+    }
+    
     
 }
 
