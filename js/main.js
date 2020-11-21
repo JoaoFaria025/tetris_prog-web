@@ -514,7 +514,14 @@ function habilitaRestart(){
 
 function invert_tabuleiro(){
     var linha_tab = N_ROW -1;
-    var tab_invert= tabuleiro;
+    var tab_invert = [];
+    for ( linha = 0; linha < N_ROW; linha++) {
+        tab_invert[linha] = [];
+        for( coluna = 0; coluna < N_COL; coluna++) {
+            tab_invert[linha][coluna] = backgroundTab;
+        }
+    }
+
     for (let linha = 0; linha < linha_tab;linha++) {
         for(let coluna =0; coluna < N_COL; coluna++){
             tab_invert[linha][coluna] = tabuleiro[linha_tab][coluna];
