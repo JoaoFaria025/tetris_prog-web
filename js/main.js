@@ -389,9 +389,12 @@ function verificarLinha() { //verificar linhas do tabuleiro
             sequenciaLinhas++;
             atualizarLinha(linha); //atualiza linha (elimina)
             contLinhas(); //atualiza a quantidade de linhas eliminadas no placar
+            invert_tabuleiro();
         }
     }
 }
+
+
 function atualizarLinha(linha){ //atualizar caso tenha uma linha completa (deletar a mesma) e somar no score
     for (let y = linha; y > 1; y--){
         for (let coluna = 0; coluna < N_COL; coluna++){
@@ -507,4 +510,19 @@ function desabilitaRestart(){
 }
 function habilitaRestart(){
     $("#restart-btn").show();
+}
+
+function invert_tabuleiro(){
+    var linha_tab = N_ROW -1;
+    var tab_invert= tabuleiro;
+    for (let linha = 0; linha < linha_tab;linha++) {
+        for(let coluna =0; coluna < N_COL; coluna++){
+            tab_invert[linha][coluna] = tabuleiro[linha_tab][coluna];
+        }
+        linha_tab--;
+ }
+tabuleiro = tab_invert;
+ layoutTetris();
+
+
 }
