@@ -188,6 +188,8 @@ function Movimentation() {
    
 }
 
+// ----------- Velocidade peça ------------
+
 function speed_peca_tab_pequeno(){
     if(score>=300){
         speed_peca = 200;
@@ -218,7 +220,8 @@ function speed_peca_tab_grande(){
     }
 }
 
-//Pintura de cada peça!!
+// ----------- Pintura de cada peça ------------
+
 function fill_piece(color) { //Pintar a peça com uma cor.
     for(var linha = 0; linha < tetrominoes_obj.activePeca.length; linha++){
         for(var coluna = 0; coluna < tetrominoes_obj.activePeca.length; coluna++){   
@@ -229,17 +232,20 @@ function fill_piece(color) { //Pintar a peça com uma cor.
     }
 }
 
-//Desenhar a peça.
+// ----------- Desenhar a peça ------------
+
 function drawPieces() { 
     fill_piece(tetrominoes_obj.color);
 }
 
-//Apagar as peças
+// ----------- Apagar as peças ------------
+
 function deletePiece() { 
     fill_piece(backgroundTab);
 }   
 
-//Movimentação da peça para baixo
+// ----------- Movimentação da peça ------------
+
 function moveDown() { 
     if(!CheckCollision(0,1,tetrominoes_obj.activePeca)){
         //Se não estiver colidindo com nada, ela pode continuar descendo!!
@@ -315,7 +321,8 @@ document.onkeydown = function (e) {
         }
 };
 
-//Funcao para checar a colisao das peças
+// ----------- Funcao para checar a colisao das peças ------------
+
 function CheckCollision(row, col, futurePiece) { 
     for (var linha = 0; linha < futurePiece.length; linha++) {
         for (var coluna = 0; coluna < futurePiece.length; coluna++) {
@@ -349,7 +356,7 @@ function CheckCollision(row, col, futurePiece) {
     return false;
 }
 
-//Travar as peças quando colidir
+// ----------- Travar as peças quando colidir ------------
 
 function lock(){
     canMove = false;
@@ -376,7 +383,8 @@ function lock(){
     canMove = true;
 }
 
-// SCORE E REMOVER LINHAS 
+// ----------- Score e remover linhas ------------
+
 function verificarLinha() { //verificar linhas do tabuleiro
     sequenciaLinhas = 0;
     for (let linha = 0; linha < N_ROW; linha++) {
@@ -416,7 +424,8 @@ function atualizarScore() { //atualiza o placar de pontuacao
     document.getElementById('score').innerHTML = mostrarScore;
 }
 
-// TEMPORIZADOR JOGO 
+// ----------- Temporizador ------------
+
 function startTimer(){
     timerPlayer = setInterval(() => { timer(); }, timerMilesimos);
 }
@@ -448,6 +457,7 @@ return format;
 }
 
 // ----------- Reiniciar Game  ------------
+
 function restartGame(valor){
     start_game(valor);//função que solicita ao usuário possível reinicialização do game
 }
