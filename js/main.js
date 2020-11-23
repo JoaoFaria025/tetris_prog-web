@@ -26,6 +26,8 @@ var timerPlayer = 0;
 var qtdLinhas = 0; //conta a quantidade de linhas eliminadas
 var sequenciaLinhas = 0; //sequencia de linhas eliminadas de uma vez so (para calculo da pontuacao bonus)
 var valor_tab_atual =0;
+var audio_game_over = document.getElementById('audio');
+var audio_inicio_game = document.getElementById('inicio_game');
 // ----------- Classe PECAS------------
 
 class Pecas{
@@ -100,6 +102,7 @@ function start_game(valor){
     valor_tab_atual = valor;
     choice(valor);
     layoutTetris();
+    play_inicio_game();
     setScoreLine(); //seta o score (0) e linhas eliminadas (0)
     startTimer(); //inicia o cronomêtro
     Movimentation();
@@ -487,17 +490,15 @@ function jogar_again_game_over(){
     restartGame(valor_tab_atual);
     resetGame();
 }
-audio = document.getElementById('audio');
+
 function gameOver() {
    
-    play();
+    play_game_over();
     abreModalGame_Over();
 
 }
 
-function play(){
-    audio.play();
- }
+
 
 function abreModalGame_Over() {
     $("#game_over").modal({
@@ -546,3 +547,9 @@ function desabilitaRestart(){
 function habilitaRestart(){
     $("#restart-btn").show();
 }
+function play_game_over(){
+    audio_game_over.play();
+ }
+ function play_inicio_game(){
+    audio_inicio_game.play();
+ }
