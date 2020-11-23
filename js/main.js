@@ -28,6 +28,7 @@ var sequenciaLinhas = 0; //sequencia de linhas eliminadas de uma vez so (para ca
 var valor_tab_atual =0;
 var audio_game_over = document.getElementById('audio');
 var audio_inicio_game = document.getElementById('inicio_game');
+var audio_line = document.getElementById('linha_eliminada');
 // ----------- Classe PECAS------------
 
 class Pecas{
@@ -406,12 +407,15 @@ function verificarLinha() { //verificar linhas do tabuleiro
             contLinhas(); //atualiza a quantidade de linhas eliminadas no placa
            invert_tabuleiro();
            peca_especial_in_line = false;
+           play_line();
+
            
         }
         if ((linhaCompleta == true) && (peca_especial_in_line == false)){
             sequenciaLinhas++;
             atualizarLinha(linha); //atualiza linha (elimina)
             contLinhas(); //atualiza a quantidade de linhas eliminadas no placa   
+            play_line();
         }
     }
 }
@@ -553,3 +557,8 @@ function play_game_over(){
  function play_inicio_game(){
     audio_inicio_game.play();
  }
+ 
+ function play_line(){
+    audio_line.play();
+ }
+ 
