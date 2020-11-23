@@ -408,8 +408,7 @@ function verificarLinha() { //verificar linhas do tabuleiro
            invert_tabuleiro();
            peca_especial_in_line = false;
            play_line();
-
-           
+            break;
         }
         if ((linhaCompleta == true) && (peca_especial_in_line == false)){
             sequenciaLinhas++;
