@@ -384,7 +384,7 @@ function lock(){
 }
 
 // ----------- Score e remover linhas ------------
-
+var peca_especial_in_line =false;
 function verificarLinha() { //verificar linhas do tabuleiro
     sequenciaLinhas = 0;
     for (let linha = 0; linha < N_ROW; linha++) {
@@ -392,16 +392,32 @@ function verificarLinha() { //verificar linhas do tabuleiro
         for (let coluna = 0; coluna < N_COL; coluna++){
             const corQuadrado = tabuleiro[linha][coluna]; 
             linhaCompleta = linhaCompleta && (corQuadrado !== backgroundTab) //verifica se a linha esta completa
+            if(corQuadrado == "#FF00FF" ){
+                peca_especial_in_line = true;
+                alert("TEM A PEÇA ESPECIAL");
+            }
         }
-        if (linhaCompleta){ //se a linha estiver completa
+        if ((linhaCompleta == true) && (peca_especial_in_line == true)){ //se a linha estiver completa
             sequenciaLinhas++;
             atualizarLinha(linha); //atualiza linha (elimina)
-            contLinhas(); //atualiza a quantidade de linhas eliminadas no placar
-            invert_tabuleiro();
+            contLinhas(); //atualiza a quantidade de linhas eliminadas no placa
+           invert_tabuleiro();
+           peca_especial_in_line = false;
+           
+        }
+        if ((linhaCompleta == true) && (peca_especial_in_line == false)){
+            sequenciaLinhas++;
+            atualizarLinha(linha); //atualiza linha (elimina)
+            contLinhas(); //atualiza a quantidade de linhas eliminadas no placa   
         }
     }
 }
+var rotacionar = document.getElementById('rolling_tetris');   
 
+function invert_tabuleiro(){
+    rotacionar.classList.toggle('rotacionar')
+
+}
 
 function atualizarLinha(linha){ //atualizar caso tenha uma linha completa (deletar a mesma) e somar no score
     for (let y = linha; y > 1; y--){
@@ -520,26 +536,4 @@ function desabilitaRestart(){
 }
 function habilitaRestart(){
     $("#restart-btn").show();
-}
-
-function invert_tabuleiro(){
-    var linha_tab = N_ROW -1;
-    var tab_invert = [];
-    for ( linha = 0; linha < N_ROW; linha++) {
-        tab_invert[linha] = [];
-        for( coluna = 0; coluna < N_COL; coluna++) {
-            tab_invert[linha][coluna] = backgroundTab;
-        }
-    }
-
-    for (let linha = 0; linha < linha_tab;linha++) {
-        for(let coluna =0; coluna < N_COL; coluna++){
-            tab_invert[linha][coluna] = tabuleiro[linha_tab][coluna];
-        }
-        linha_tab--;
- }
-tabuleiro = tab_invert;
- layoutTetris();
-
-
 }
