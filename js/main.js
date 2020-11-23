@@ -1,5 +1,4 @@
 //------------- Constantes ------------------
-const dificultPlayer = document.getElementById("dificuldade");
 const backgroundTab = "#0a0b19"; //fundo color tab
 const borderTab = "red"; //bordar pra conseguir visualizar as peças e o size
 
@@ -521,6 +520,8 @@ function setScoreLine() {
     document.getElementById('score').innerHTML = zerar;
 }
 
+// ----------- Alternar visualização botões  ------------
+
 function desabilitaPlay(){
     $("#play-btn").hide();
 }
@@ -531,6 +532,9 @@ function desabilitaRestart(){
 function habilitaRestart(){
     $("#restart-btn").show();
 }
+
+// ----------- Sons Game  ------------
+
 function play_game_over(){
     audio_game_over.play();
  }
