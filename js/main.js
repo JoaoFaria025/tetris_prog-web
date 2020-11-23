@@ -29,6 +29,7 @@ var valor_tab_atual =0;
 var audio_game_over = document.getElementById('audio');
 var audio_inicio_game = document.getElementById('inicio_game');
 var audio_line = document.getElementById('linha_eliminada');
+
 // ----------- Classe PECAS------------
 
 class Pecas{
@@ -92,7 +93,7 @@ function choice(valor){
             tabuleiro[linha][coluna] = backgroundTab;
         }
     }
-    }catch(e){//exibe um alery
+    }catch(e){//exibe um alert
         alert(e + "-- 𝗱𝗶𝗴𝗶𝘁𝗲 𝘂𝗺𝗮 𝗲𝗻𝘁𝗿𝗮𝗱𝗮 𝘃𝗮𝗹𝗶𝗱𝗮")
     }
     
@@ -184,12 +185,7 @@ function Movimentation() {
         if (tamPecas == 14){
             speed_peca_tab_grande();
         }
-
-       
     }
-    
-    
-   
 }
 
 // ----------- Velocidade peça ------------
@@ -387,44 +383,33 @@ function lock(){
     canMove = true;
 }
 
-// ----------- Score e remover linhas ------------
-var peca_especial_in_line =false;
+// ----------- Score, remover linhas e rotacionar tabuleiro ------------
 function verificarLinha() { //verificar linhas do tabuleiro
     sequenciaLinhas = 0;
     for (let linha = 0; linha < N_ROW; linha++) {
         let linhaCompleta = true; //variavel que representa se a linha esta completa
-        for (let coluna = 0; coluna < N_COL; coluna++){
+        for (let coluna = 0; coluna < N_COL; coluna++) {
             const corQuadrado = tabuleiro[linha][coluna]; 
             linhaCompleta = linhaCompleta && (corQuadrado !== backgroundTab) //verifica se a linha esta completa
-            if(corQuadrado == "#FF00FF" ){
-                peca_especial_in_line = true;
-               // alert("TEM A PEÇA ESPECIAL");
+            if(corQuadrado == "#FF00FF"){ //se possuir a peça especial
+                var line_with_especial = linha; //guarda a linha que possui a peça especial
             }
         }
-        if ((linhaCompleta == true) && (peca_especial_in_line == true)){ //se a linha estiver completa
-            sequenciaLinhas++;
-            atualizarLinha(linha); //atualiza linha (elimina)
-            contLinhas(); //atualiza a quantidade de linhas eliminadas no placa
-           invert_tabuleiro();
-           peca_especial_in_line = false;
-           play_line();
-            break;
-        }
-        if ((linhaCompleta == true) && (peca_especial_in_line == false)){
-            sequenciaLinhas++;
-            atualizarLinha(linha); //atualiza linha (elimina)
-            contLinhas(); //atualiza a quantidade de linhas eliminadas no placa   
+        if (linhaCompleta == true) { //se a linha estiver completa
+            sequenciaLinhas++; //conta a sequencia de linhas completas
+            atualizarLinha(linha); //atualiza linha (remove)
+            contLinhas(); //atualiza a quantidade de linhas eliminadas no placar
             play_line();
+            if(linha == line_with_especial) { //se a linha removida é a mesma linha que possui a peça especial
+                invert_tabuleiro(); //inverte o tabuleiro
+            }
         }
     }
 }
 var rotacionar = document.getElementById('rolling_tetris');   
-
 function invert_tabuleiro(){
     rotacionar.classList.toggle('rotacionar')
-
 }
-
 function atualizarLinha(linha){ //atualizar caso tenha uma linha completa (deletar a mesma) e somar no score
     for (let y = linha; y > 1; y--){
         for (let coluna = 0; coluna < N_COL; coluna++){
@@ -486,9 +471,8 @@ function restartGame(valor){
 
 function reiniciar_jogo(){
     window.location.reload(true);
+}
 
-
-    }
 function jogar_again_game_over(){
     restartGame(valor_tab_atual);
     resetGame();
@@ -500,13 +484,11 @@ function gameOver() {
     abreModalGame_Over();
 }
 
-
-
 function abreModalGame_Over() {
     $("#game_over").modal({
       show: true
     });
-  }
+}
 
 function resetGame() {
     stopTimer();
