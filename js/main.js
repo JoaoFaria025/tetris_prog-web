@@ -495,10 +495,9 @@ function jogar_again_game_over(){
 }
 
 function gameOver() {
-   
+    pause_inicio_game();
     play_game_over();
     abreModalGame_Over();
-
 }
 
 
@@ -559,5 +558,9 @@ function play_game_over(){
  
  function play_line(){
     audio_line.play();
+ }
+
+ function pause_inicio_game(){
+    audio_inicio_game.pause();
  }
  
