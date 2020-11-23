@@ -432,8 +432,10 @@ function atualizarScore() { //atualiza o placar de pontuacao
 
 // ----------- Temporizador ------------
 
-function startTimer(){
-    timerPlayer = setInterval(() => { timer(); }, timerMilesimos);
+function startTimer(){//recebe os milesimos e cria um timer
+    timerPlayer = setInterval(() => { 
+        timer(); 
+    }, timerMilesimos);
 }
 function stopTimer(){
     clearInterval(timerPlayer);
@@ -452,8 +454,10 @@ function timer(){
     }
     
 //Cria uma variável com o valor tratado MM:SS
+//No operador ternário se minutes < 10 então format recebe '0' + minutes senão só exibe os minutes
+//No operador ternário se seconds < 10 então format recebe '0' + seconds senão só exibe os seconds
 var format = (minutes< 10 ? '0' + minutes: minutes) + ':' + (seconds< 10 ? '0' + seconds: seconds);
-    
+
 //Insere o valor tratado no elemento counter
 document.getElementById('tempo').innerText = format;
 
