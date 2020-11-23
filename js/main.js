@@ -1,5 +1,4 @@
 //------------- Constantes ------------------
-const dificultPlayer = document.getElementById("dificuldade");
 const backgroundTab = "#0a0b19"; //fundo color tab
 const borderTab = "red"; //bordar pra conseguir visualizar as peças e o size
 
@@ -487,22 +486,17 @@ function restartGame(valor){
 
 function reiniciar_jogo(){
     window.location.reload(true);
-
-
     }
+
 function jogar_again_game_over(){
     restartGame(valor_tab_atual);
     resetGame();
 }
 
 function gameOver() {
-   
     play_game_over();
     abreModalGame_Over();
-
 }
-
-
 
 function abreModalGame_Over() {
     $("#game_over").modal({
@@ -541,6 +535,8 @@ function setScoreLine() {
     document.getElementById('score').innerHTML = zerar;
 }
 
+// ----------- Alternar a visualização dos botões  ------------
+
 function desabilitaPlay(){
     $("#play-btn").hide();
 }
@@ -551,6 +547,9 @@ function desabilitaRestart(){
 function habilitaRestart(){
     $("#restart-btn").show();
 }
+
+// ----------- Som game  ------------
+
 function play_game_over(){
     audio_game_over.play();
  }
