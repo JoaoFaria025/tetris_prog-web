@@ -66,7 +66,9 @@
 
  <main id="gameState" class="stoped main" >   
 	<div class="grid">
-        
+        <audio id="audio">
+            <source src="js/game_over.mp3" type="audio/mp3" />
+         </audio>
         <canvas id="rolling_tetris" class="game-board" height="200" width="400"></canvas>
 		<div class="right-column">
 			<div>
@@ -197,6 +199,21 @@
     </div>
 </div>
 
+
+    <!-- MODAL GAME OVER   -->
+    <div class="modal fade" id="game_over" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="exampleModalLongTitle">Game over! Deseja Jogar Novamente?</h5>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-success"  onclick="jogar_again_game_over()" data-dismiss="modal"> Jogar novamente</button> 
+                <button type="button" class="btn btn-danger" onclick="reiniciar_jogo()">Cancelar e voltar ao menu.</button>
+            </div>
+            </div>
+        </div>
+        </div>
 
 
 </html>

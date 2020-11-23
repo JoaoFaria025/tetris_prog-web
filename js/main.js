@@ -394,7 +394,7 @@ function verificarLinha() { //verificar linhas do tabuleiro
             linhaCompleta = linhaCompleta && (corQuadrado !== backgroundTab) //verifica se a linha esta completa
             if(corQuadrado == "#FF00FF" ){
                 peca_especial_in_line = true;
-                alert("TEM A PEÇA ESPECIAL");
+               // alert("TEM A PEÇA ESPECIAL");
             }
         }
         if ((linhaCompleta == true) && (peca_especial_in_line == true)){ //se a linha estiver completa
@@ -480,20 +480,30 @@ function restartGame(valor){
 
 function reiniciar_jogo(){
     window.location.reload(true);
-    }
 
-function gameOver() {
-    let warning = confirm("Game over! Deseja Jogar Novamente?");
 
-    if (warning) {
-        restartGame(valor_tab_atual);
-        resetGame();
     }
-    else{
-        reiniciar_jogo();
-        resetGame();
-    }
+function jogar_again_game_over(){
+    restartGame(valor_tab_atual);
+    resetGame();
 }
+audio = document.getElementById('audio');
+function gameOver() {
+   
+    play();
+    abreModalGame_Over();
+
+}
+
+function play(){
+    audio.play();
+ }
+
+function abreModalGame_Over() {
+    $("#game_over").modal({
+      show: true
+    });
+  }
 
 function resetGame() {
     stopTimer();
@@ -509,7 +519,6 @@ function resetGame() {
     timerPlayer = 0;
     qtdLinhas = 0; 
     sequenciaLinhas = 0;
-    tabuleiro[linha] = [];
     for ( linha = 0; linha < N_ROW; linha++) {
         tabuleiro[linha] = [];
         for( coluna = 0; coluna < N_COL; coluna++) {
