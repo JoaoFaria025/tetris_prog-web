@@ -93,7 +93,7 @@ function choice(valor){
         }
     }
     }catch(e){//exibe um alert
-        alert(e + "-- 𝗱𝗶𝗴𝗶𝘁𝗲 𝘂𝗺𝗮 𝗲𝗻𝘁𝗿𝗮𝗱𝗮 𝘃𝗮𝗹𝗶𝗱𝗮")
+        alert(e + ": Ocorreu algum erro na escolha do tabuleiro!");
     }
     
     
