@@ -1,7 +1,9 @@
 <?php
 //conexão bd - tetris_bd
-require_once 'jogador.php';
-$player = new Jogador("tetris_bd","localhost","root","");
+require_once 'conexao.php';
+$player = new conexao();
+$player->getConexao();
+
 ?>
 
 <!DOCTYPE html>
