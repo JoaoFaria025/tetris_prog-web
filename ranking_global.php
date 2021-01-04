@@ -1,3 +1,9 @@
+<?php
+//conexão bd - tetris_bd
+require_once 'jogador.php';
+$player = new Jogador("tetris_bd","localhost","root","");
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -38,7 +44,7 @@
   <!--NAV -->
   <nav class="navbar navbar-expand-lg " id="edit">
     <div class="container">
-      <a class="navbar-brand h1 mb-0" href="rt.html"><img src="img/unicamp-logo.png" alt="Unicamp logo"
+      <a class="navbar-brand h1 mb-0" href="rt.php"><img src="img/unicamp-logo.png" alt="Unicamp logo"
           style="width: 250px;"></a>
       <button class="navbar-toggler navbar-light bg-light" type="button" data-toggle="collapse"
         data-target="#navbarSite">
@@ -46,7 +52,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSite">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a class="nav-link active menu" href="rt.html">Rolling Tetris</a></li>
+          <li class="nav-item"><a class="nav-link active menu" href="rt.php">Rolling Tetris</a></li>
           <li class="nav-item"><a class="nav-link active menu" href="#" style="color:#ff5e57;">Rankings</a></li>
           <li class="nav-item"><a class="nav-link active menu" href="#sair_modal" data-toggle="modal"
               data-target="#sair_modal">Sair</a></li>

@@ -1,3 +1,9 @@
+<?php
+//conexão bd - tetris_bd
+require_once 'jogador.php';
+$player = new Jogador("tetris_bd","localhost","root","");
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
