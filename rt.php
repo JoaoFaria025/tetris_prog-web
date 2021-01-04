@@ -1,3 +1,9 @@
+<?php
+//conexão bd - tetris_bd
+require_once 'jogador.php';
+$player = new Jogador("tetris_bd","localhost","root","");
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -51,7 +57,7 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a class="nav-link active menu" href="#" style="color:#ff5e57;">Rolling
                             Tetris</a></li>
-                    <li class="nav-item"><a class="nav-link active menu" href="ranking_global.html">Rankings</a>
+                    <li class="nav-item"><a class="nav-link active menu" href="ranking_global.php">Rankings</a>
                     </li>
                     <li class="nav-item"><a class="nav-link active menu" href="#myModal" data-toggle="modal"
                             data-target="#myModal">Editar Perfil</a></li>

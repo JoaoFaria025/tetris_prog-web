@@ -33,7 +33,7 @@
                     <label class="form-label" for="password"><b>Senha:</b></label>
                     <input type="password" class="form-control" id="password" name="password" placeholder="Digite sua senha aqui" required>
                 </div>
-                <h1 class="titulos-login-cadastro text-center"><a href="cadastro.html" style="color: black;"><b>Efetuar cadastro</b></a></h1>                            
+                <h1 class="titulos-login-cadastro text-center"><a href="cadastro.php" style="color: black;"><b>Efetuar cadastro</b></a></h1>                            
                 <div class="text-center">
                     <input class="btn btn-start-order" type="submit" value="Enviar" id="btn-form">
                 </div>
