@@ -17,7 +17,7 @@ class conexao {
         try {
             $this->conexao = new PDO("mysql:host=$this->host;dbname=$this->database", $this->user, $this->password);
         } catch (PDOException $e) {
-            echo "Erro na conexão com o dbanco de dados: " . $e->getMessage() . "<br/>";
+            echo "Erro na conexão com o banco de dados: " . $e->getMessage() . "<br/>";
         }
     }
 

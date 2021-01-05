@@ -1,7 +1,17 @@
 <?php
 //conexão bd - tetris_bd
-require_once 'jogador.php';
-$player = new conexao("tetris_bd","localhost","root","");
+require_once 'conexao.php';
+$player = new conexao();
+$conn  = $player->getConexao();
+?>
+
+<!-- verificar sessão -->
+<?php
+    session_start(); //abrir a sessao
+    if(!isset($_SESSION['id_usuario'])){ //verificar se o usuario esta logado
+        header("location: index.php"); //redireciona para a pagina de login
+        exit;
+    } 
 ?>
 
 <!DOCTYPE html>

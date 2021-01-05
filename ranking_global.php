@@ -6,6 +6,15 @@ $conn  = $player->getConexao();
 
 ?>
 
+<!-- verificar sessão -->
+<?php
+    session_start(); //abrir a sessao
+    if(!isset($_SESSION['id_usuario'])){ //verificar se o usuario esta logado
+        header("location: index.php"); //redireciona para a pagina de login
+        exit;
+    } 
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
