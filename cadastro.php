@@ -36,7 +36,7 @@ $player->getConexao();
                 <div class="forms">
                     <div class="form-group">
                         <label class="form-label" for="name"><b>Nome:</b></label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Digite seu nome aqui" required>
+                        <input type="text" class="form-control" id="name" name="nome" placeholder="Digite seu nome aqui" required>
                     </div>                            
                     <div class="form-group">
                         <label class="form-label" for="email"><b>Data de nascimento:</b></label>
