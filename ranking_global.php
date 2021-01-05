@@ -83,6 +83,7 @@ $conn  = $player->getConexao();
    <tbody class="text-white">
 
         <?php
+        //MUDAR O USERNAME_USU PARA O ATUAL!
       $result_msg = "SELECT * FROM ranking WHERE username_usu = 'cORSI' ORDER BY id_ranking ASC";
       $test =  $conn->prepare($result_msg);
       $test->execute();
@@ -118,8 +119,8 @@ $conn  = $player->getConexao();
           <th scope="col">Nível Máximo atingido</th>
         </tr>
       </thead>
-     
-   <tbody class="text-white">
+      <tbody class="text-white">
+
 
           <?php
           $count = 1;
@@ -135,14 +136,59 @@ $conn  = $player->getConexao();
                       <td><?php echo $row_msg_cont['nivel_atingido'].'<br>'; ?></td>
                   </tr>
             
-                 
+                
 
           <?php
-           $count++;
+          $count++;
           }     
           ?>      
-    </tbody>
+        <tr class="bg-dark">
+          <th scope="row" class="posicao_atual">Sua posição atual no Ranking:</th>
+          <?php
 
+          //MUDAR O USERNAME_USU PARA O ATUAL!
+          $result_atual = "SELECT * FROM ranking WHERE username_usu = 'cORSI' ORDER BY pontuacao_usu DESC LIMIT 1";
+          $resultado =  $conn->prepare($result_atual);
+          $resultado->execute();
+          while ($row_msg_atual = $resultado->fetch(PDO::FETCH_ASSOC)){
+            $pontuacao_usu = $row_msg_atual['pontuacao_usu'];
+            //MUDAR O USERNAME_USU PARA O ATUAL!
+            $verifica_posicao = "SELECT * FROM ranking WHERE username_usu = 'cORSI' and pontuacao_usu ='".$pontuacao_usu."' LIMIT 1";
+            $resultado_atual =  $conn->prepare($verifica_posicao);
+            $resultado_atual->execute();
+            $array_valores =  $resultado_atual->fetch(PDO::FETCH_ASSOC);
+
+            $count_novo = 1;
+            $count_atual = 0;
+
+            $query_verifica = "SELECT * FROM ranking ORDER BY pontuacao_usu DESC LIMIT 10";
+            $valor_rankings =  $conn->prepare($query_verifica);
+            $valor_rankings->execute();
+
+            while ($result_query= $valor_rankings->fetch(PDO::FETCH_ASSOC)){
+              if($result_query['pontuacao_usu'] == $array_valores['pontuacao_usu']){
+                $count_atual =  $count_novo;
+                break;
+
+              }
+
+              else{
+              $count_novo++;
+              }
+
+              }     
+         
+          ?>
+           
+                       <td colspan="3" class="posicao_atual"><?php  echo $count_atual;?></td>
+                           
+          <?php
+          }     
+          ?> 
+
+         
+        </tr>
+      </tbody>
     </table>
   </main>
 
