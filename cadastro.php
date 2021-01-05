@@ -31,7 +31,7 @@ $player->getConexao();
     <!--Forms cadastro-->
     <main>
         <div id="container-forms">
-            <form id="contact-form" class="form"  action="index.html" method="POST">
+            <form id="contact-form" class="form"  action="proc.php" method="POST">
                 <h1 class="titulos-login text-center"><b>Efetuar cadastro:</b></h1>
                 <div class="forms">
                     <div class="form-group">
