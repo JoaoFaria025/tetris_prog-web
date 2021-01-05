@@ -169,7 +169,7 @@ $conn  = $player->getConexao();
                     <h5 class="modal-title text-light" id="exampleModalLabel">Deseja sair?</h5>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal"><a href="logoff.php">Confirmar</a></button>
+                <a  class="btn btn-success" href="logoff.php"> Confirmar</a>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>
