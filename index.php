@@ -56,7 +56,7 @@ $conn  = $player->getConexao();
         $username = $_POST['username'];
         $senha = $_POST['senha'];
         //verificar username e senha (se estao cadastrados no banco de dados)
-        $q = "SELECT id_usuario FROM usuario WHERE username = :user AND senha = :s";
+        $q = "SELECT * FROM usuario WHERE username = :user AND senha = :s";
         $sql = $conn->prepare($q);
         $sql->bindValue(":user",$username); //substitui pelo username que veio como parametro
         $sql->bindValue(":s",$senha); //substitui pela senha que veio como parametro
@@ -65,6 +65,7 @@ $conn  = $player->getConexao();
                 $info = $sql->fetch(); //recebe os dados e transforma em um array
                 session_start(); //criar uma sessao
                 $_SESSION['id_usuario'] = $info['id_usuario']; //id do usuario logado esta armazenado em uma sessao
+                $_SESSION['aaaa'] = $resultado['username'];   
                 header('Location: rt.php'); //acesso ao sistema (area privada)
                 exit();
             }

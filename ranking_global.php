@@ -1,5 +1,6 @@
 <?php
 //conexão bd - tetris_bd
+
 require_once 'conexao.php';
 $player = new conexao();
 $conn  = $player->getConexao();
@@ -92,14 +93,21 @@ $conn  = $player->getConexao();
    <tbody class="text-white">
 
         <?php
+                   $codigo_usuario = $_SESSION['id_usuario']; //id_usuario DO USUÁRIO
+                   $cst = $conn->prepare("SELECT * from usuario WHERE id_usuario=:usu_id");
+                   $cst->bindParam(":usu_id", $codigo_usuario, PDO::PARAM_INT);
+                   $cst->execute();
+                   $resultado = $cst->fetch(); // SALVA OS DADOS DO BD NA FORMA DE UM ARRAY.
+                   $_SESSION['username'] = $resultado['username'];   
+        
         //MUDAR O USERNAME_USU PARA O ATUAL!
-      $result_msg = "SELECT * FROM ranking WHERE username_usu = 'cORSI' ORDER BY id_ranking ASC";
-      $test =  $conn->prepare($result_msg);
-      $test->execute();
-       while ($row_msg_cont = $test->fetch(PDO::FETCH_ASSOC)){
-         ?>
+          $result_msg = "SELECT * FROM ranking WHERE username_usu = '".$_SESSION['username']."' ORDER BY id_ranking ASC";
+          $test =  $conn->prepare($result_msg);
+          $test->execute();
+          while ($row_msg_cont = $test->fetch(PDO::FETCH_ASSOC)){
+            ?>
                  <tr>
-                    <th scope="row"><?php echo $row_msg_cont['id_ranking'].'<br>'; ?></th>
+                    <th scope="row"><?php echo $row_msg_cont['username_usu'].'<br>'; ?></th>
                     <td><?php echo $row_msg_cont['pontuacao_usu'].'<br>'; ?></td>
                     <td><?php echo $row_msg_cont['nivel_atingido'].'<br>'; ?></td>
                     <td><?php echo $row_msg_cont['tempo_partida'].'<br>'; ?></td>
@@ -121,6 +129,10 @@ $conn  = $player->getConexao();
  
     <div class="titulo-rank text-center">
       <h1 class="titulos"><b>RANKING GLOBAL</b></h1>
+
+      <?php
+      echo $_SESSION['id_usuario'];
+      ?>
       <hr class="hr">
     </div>
     <table class="table bg-dark" id="table_rank_1">
@@ -160,13 +172,13 @@ $conn  = $player->getConexao();
           <?php
 
           //MUDAR O USERNAME_USU PARA O ATUAL!
-          $result_atual = "SELECT * FROM ranking WHERE username_usu = 'cORSI' ORDER BY pontuacao_usu DESC LIMIT 1";
+          $result_atual = "SELECT * FROM ranking WHERE username_usu = '".$_SESSION['username']."' ORDER BY pontuacao_usu DESC LIMIT 1";
           $resultado =  $conn->prepare($result_atual);
           $resultado->execute();
           while ($row_msg_atual = $resultado->fetch(PDO::FETCH_ASSOC)){
             $pontuacao_usu = $row_msg_atual['pontuacao_usu'];
             //MUDAR O USERNAME_USU PARA O ATUAL!
-            $verifica_posicao = "SELECT * FROM ranking WHERE username_usu = 'cORSI' and pontuacao_usu ='".$pontuacao_usu."' LIMIT 1";
+            $verifica_posicao = "SELECT * FROM ranking WHERE username_usu = '".$_SESSION['username']."' and pontuacao_usu ='".$pontuacao_usu."' LIMIT 1";
             $resultado_atual =  $conn->prepare($verifica_posicao);
             $resultado_atual->execute();
             $array_valores =  $resultado_atual->fetch(PDO::FETCH_ASSOC);
