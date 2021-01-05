@@ -12,6 +12,10 @@ $conn  = $player->getConexao();
         header("location: index.php"); //redireciona para a pagina de login
         exit;
     } 
+    $sql = "SELECT * FROM usuario WHERE id_usuario = '".$_SESSION['id_usuario']."'";
+    $resultado = $conn->prepare($sql);
+    $resultado->execute();
+    $row = $resultado->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -112,38 +116,31 @@ $conn  = $player->getConexao();
                         <div class="forms">
                             <div class="form-group">
                                 <label class="form-label" for="name"><b>Nome:</b></label>
-                                <input type="text" class="form-control" id="name" name="name"
-                                    placeholder="Digite seu nome aqui" required>
+                                <input type="text" class="form-control" id="name" name="name" value="<?php if(isset($row['id_usuario'])){ echo $row['nome']; }?>">
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="email"><b>Data de nascimento:</b></label>
-                                <input  type="text" class="form-control" id="dtnasc" name="dtnasc"
-                                    placeholder="Não é possível alterar este campo" required>
+                                <input  type="text" class="form-control" id="dtnasc" name="dtnasc" value="<?php if(isset($row['id_usuario'])){ echo $row['data_nasc']; }?>">
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="name"><b>CPF:</b></label>
-                                <input  type="text" class="form-control" id="cpf" name="cpf"
-                                    placeholder="Não é possível alterar este campo" required>
+                                <input  type="text" class="form-control" id="cpf" name="cpf" value="<?php if(isset($row['id_usuario'])){ echo $row['CPF']; }?>">
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="name"><b>Telefone:</b></label>
-                                <input type="text" class="form-control" id="telefone" name="telefone"
-                                    placeholder="(00)0000-0000" required>
+                                <input type="text" class="form-control" id="telefone" name="telefone" value="<?php if(isset($row['id_usuario'])){ echo $row['telefone']; }?>">
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="name"><b>Email:</b></label>
-                                <input type="email" class="form-control" id="email" name="email"
-                                    placeholder="Digite o seu email aqui" required>
+                                <input type="email" class="form-control" id="email" name="email" value="<?php if(isset($row['id_usuario'])){ echo $row['email']; }?>">
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="name"><b>Username:</b></label>
-                                <input  type="text" class="form-control" id="username" name="username"
-                                    placeholder="Não é possível alterar este campo" required>
+                                <input  type="text" class="form-control" id="username" name="username" value="<?php if(isset($row['id_usuario'])){ echo $row['username']; }?>">
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="email"><b>Senha:</b></label>
-                                <input type="password" class="form-control" id="senha" name="senha"
-                                    placeholder="Digite sua senha aqui" required>
+                                <input type="text" class="form-control" id="senha" name="senha" value="<?php if(isset($row['id_usuario'])){ echo $row['senha']; }?>">
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-success"  value="send"
