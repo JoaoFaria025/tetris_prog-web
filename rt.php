@@ -111,20 +111,20 @@ $conn  = $player->getConexao();
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
-                    <form id="contact-form" class="form" action="#" method="POST">
+                    <form id="contact-form" class="form" action="edit_perfil.php" method="POST">
                         <h1 class="titulo"><b>Editar informações pessoais:</b></h1>
                         <div class="forms">
                             <div class="form-group">
                                 <label class="form-label" for="name"><b>Nome:</b></label>
-                                <input type="text" class="form-control" id="name" name="name" value="<?php if(isset($row['id_usuario'])){ echo $row['nome']; }?>">
+                                <input type="text" class="form-control" id="name" name="nome" value="<?php if(isset($row['id_usuario'])){ echo $row['nome']; }?>">
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="email"><b>Data de nascimento:</b></label>
-                                <input  type="text" class="form-control" id="dtnasc" name="dtnasc" value="<?php if(isset($row['id_usuario'])){ echo $row['data_nasc']; }?>">
+                                <input  type="text" class="form-control" id="dtnasc" name="dtnasc" readonly="true" value="<?php if(isset($row['id_usuario'])){ echo $row['data_nasc']; }?>">
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="name"><b>CPF:</b></label>
-                                <input  type="text" class="form-control" id="cpf" name="cpf" value="<?php if(isset($row['id_usuario'])){ echo $row['CPF']; }?>">
+                                <input  type="text" class="form-control" id="cpf" name="cpf" readonly="true" value="<?php if(isset($row['id_usuario'])){ echo $row['CPF']; }?>">
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="name"><b>Telefone:</b></label>
@@ -136,7 +136,7 @@ $conn  = $player->getConexao();
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="name"><b>Username:</b></label>
-                                <input  type="text" class="form-control" id="username" name="username" value="<?php if(isset($row['id_usuario'])){ echo $row['username']; }?>">
+                                <input  type="text" class="form-control" id="username" name="username" readonly="true" value="<?php if(isset($row['id_usuario'])){ echo $row['username']; }?>">
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="email"><b>Senha:</b></label>
