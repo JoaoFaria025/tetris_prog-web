@@ -116,7 +116,7 @@ $conn  = $player->getConexao();
                         <div class="forms">
                             <div class="form-group">
                                 <label class="form-label" for="name"><b>Nome:</b></label>
-                                <input type="text" class="form-control" id="name" name="name" value="<?php if(isset($row['id_usuario'])){ echo $row['nome']; }?>">
+                                <input type="text" class="form-control" id="name" name="nome" value="<?php if(isset($row['id_usuario'])){ echo $row['nome']; }?>">
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="email"><b>Data de nascimento:</b></label>
