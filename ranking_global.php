@@ -129,10 +129,6 @@ $conn  = $player->getConexao();
  
     <div class="titulo-rank text-center">
       <h1 class="titulos"><b>RANKING GLOBAL</b></h1>
-
-      <?php
-      echo $_SESSION['id_usuario'];
-      ?>
       <hr class="hr">
     </div>
     <table class="table bg-dark" id="table_rank_1">
