@@ -165,12 +165,14 @@ $conn  = $player->getConexao();
           ?>      
         <tr class="bg-dark">
           <th scope="row" class="posicao_atual">Sua posição atual no Ranking:</th>
+          
           <?php
-
+          $count_atual = 0;
           //MUDAR O USERNAME_USU PARA O ATUAL!
           $result_atual = "SELECT * FROM ranking WHERE username_usu = '".$_SESSION['username']."' ORDER BY pontuacao_usu DESC LIMIT 1";
           $resultado =  $conn->prepare($result_atual);
           $resultado->execute();
+  
           while ($row_msg_atual = $resultado->fetch(PDO::FETCH_ASSOC)){
             $pontuacao_usu = $row_msg_atual['pontuacao_usu'];
             //MUDAR O USERNAME_USU PARA O ATUAL!
@@ -180,7 +182,7 @@ $conn  = $player->getConexao();
             $array_valores =  $resultado_atual->fetch(PDO::FETCH_ASSOC);
 
             $count_novo = 1;
-            $count_atual = 0;
+           
 
             $query_verifica = "SELECT * FROM ranking ORDER BY pontuacao_usu DESC LIMIT 10";
             $valor_rankings =  $conn->prepare($query_verifica);
@@ -190,24 +192,31 @@ $conn  = $player->getConexao();
               if($result_query['pontuacao_usu'] == $array_valores['pontuacao_usu']){
                 $count_atual =  $count_novo;
                 break;
-
-              }
+               
+              } 
 
               else{
               $count_novo++;
               }
 
               }     
-         
+          }     
+          ?>
+
+
+          <?php 
+          if ($count_atual != 0 ){
+              ?>
+               <td colspan="3" class="posicao_atual"><?php  echo $count_atual;?></td>
+              <?php
+          }
+          else{
+          ?>
+         <td colspan="3" class="posicao_atual"><?php  echo 'Jogue um game para entrar no ranking';?></td>
+        <?php
+          }
           ?>
            
-                       <td colspan="3" class="posicao_atual"><?php  echo $count_atual;?></td>
-                           
-          <?php
-          }     
-          ?> 
-
-         
         </tr>
       </tbody>
     </table>
