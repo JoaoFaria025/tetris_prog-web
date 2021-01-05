@@ -103,9 +103,13 @@ $conn  = $player->getConexao();
         </table>
     </div>
 </section>
-
+<br>
+<br>
+<br>
   <!--RANKING GLOBAL-->
   <main>
+ 
+ 
     <div class="titulo-rank text-center">
       <h1 class="titulos"><b>RANKING GLOBAL</b></h1>
       <hr class="hr">
