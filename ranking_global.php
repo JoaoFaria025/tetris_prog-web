@@ -230,8 +230,8 @@ $conn  = $player->getConexao();
           </button>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-danger">Confirmar</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+          <a  class="btn btn-success" href="logoff.php"> Confirmar</a>
         </div>
       </div>
     </div>
