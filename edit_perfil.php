@@ -28,10 +28,10 @@ $update->bindParam(':username', $username);
 $update->bindParam(':senha', $senha);
 
 if($update->execute()){
-    echo("foi");
+    echo("Deu tudo certo");
     header("Location: rt.php");
 }
 else{
-echo("n foi");
+echo("Erro ao executar");
 }
 ?>
