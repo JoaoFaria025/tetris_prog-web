@@ -2,7 +2,7 @@
 //conexão bd - tetris_bd
 require_once 'conexao.php';
 $player = new conexao();
-$player->getConexao();
+$conn  = $player->getConexao();
 
 ?>
 
@@ -69,69 +69,37 @@ $player->getConexao();
         <hr class="hr">
     </div>
     <div class="rank bg-dark">
-        <table id="table_rank" class="table">
-            <thead>
+   <table id="table_rank" class="table">
+   <thead>
                 <tr>
                     <th scope="col">Nome</th>
                     <th scope="col">Pontuação</th>
                     <th scope="col">Nível atingido</th>
                     <th scope="col">Tempo de duraçao</th>
                 </tr>
-            </thead>
-            <tbody class="text-white">
-                <tr>
-                    <th scope="row">João</th>
-                    <td>200</td>
-                    <td>10</td>
-                    <td>10</td>
+   </thead>
+
+
+   <tbody class="text-white">
+
+        <?php
+      $result_msg = "SELECT * FROM ranking WHERE username_usu = 'cORSI' ORDER BY id_ranking ASC";
+      $test =  $conn->prepare($result_msg);
+      $test->execute();
+       while ($row_msg_cont = $test->fetch(PDO::FETCH_ASSOC)){
+         ?>
+                 <tr>
+                    <th scope="row"><?php echo $row_msg_cont['id_ranking'].'<br>'; ?></th>
+                    <td><?php echo $row_msg_cont['pontuacao_usu'].'<br>'; ?></td>
+                    <td><?php echo $row_msg_cont['nivel_atingido'].'<br>'; ?></td>
+                    <td><?php echo $row_msg_cont['tempo_partida'].'<br>'; ?></td>
                 </tr>
-                <tr>
-                    <th scope="row">João</th>
-                    <td>200</td>
-                    <td>10</td>
-                    <td>10</td>
-                </tr>
-                <tr>
-                    <th scope="row">João</th>
-                    <td>200</td>
-                    <td>10</td>
-                    <td>10</td>
-                </tr>
-                <tr>
-                    <th scope="row">João</th>
-                    <td>200</td>
-                    <td>10</td>
-                    <td>10</td>
-                </tr>
-                <tr>
-                    <th scope="row">João</th>
-                    <td>200</td>
-                    <td>10</td>
-                    <td>10</td>
-                </tr>
-                <tr>
-                    <th scope="row">João</th>
-                    <td>200</td>
-                    <td>10</td>
-                    <td>10</td>
-                </tr>
+
+      <?php
+       }     
+ ?>      
             </tbody>
         </table>
-        <ul class="pagination justify-content-center bg-dark">
-            <li class="page-item">
-                <a class="page-link bg-dark text-white" href="#" tabindex="-1">Anterior</a>
-            </li>
-            <li class="page-item "><a class="page-link bg-dark text-white" href="#">1</a></li>
-            <li class="page-item ">
-                <a class="page-link bg-dark text-white" href="#">2 </a>
-            </li>
-            <li class="page-item">
-                <a class="page-link bg-dark text-white" href="#">3</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link bg-dark text-white" href="#">Próximo</a>
-            </li>
-        </ul>
     </div>
 </section>
 
@@ -150,72 +118,31 @@ $player->getConexao();
           <th scope="col">Nível Máximo atingido</th>
         </tr>
       </thead>
-      <tbody class="text-white">
-        <tr>
-          <th scope="row">1</th>
-          <td>joão</td>
-          <td>10</td>
-          <td>10</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>joão</td>
-          <td>10</td>
-          <td>10</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>joão</td>
-          <td>10</td>
-          <td>10</td>
-        </tr>
-        <tr>
-          <th scope="row">4</th>
-          <td>joão</td>
-          <td>10</td>
-          <td>10</td>
-        </tr>
-        <tr>
-          <th scope="row">5</th>
-          <td>joão</td>
-          <td>10</td>
-          <td>10</td>
-        </tr>
-        <tr>
-          <th scope="row">6</th>
-          <td>joão</td>
-          <td>10</td>
-          <td>10</td>
-        </tr>
-        <tr>
-          <th scope="row">7</th>
-          <td>joão</td>
-          <td>10</td>
-          <td>10</td>
-        </tr>
-        <tr>
-          <th scope="row">8</th>
-          <td>joão</td>
-          <td>10</td>
-          <td>10</td>
-        </tr>
-        <tr>
-          <th scope="row">9</th>
-          <td>joão</td>
-          <td>10</td>
-          <td>10</td>
-        </tr>
-        <tr>
-          <th scope="row">10</th>
-          <td>joão</td>
-          <td>10</td>
-          <td>10</td>
-        </tr>
-        <tr class="bg-dark">
-          <th scope="row" class="posicao_atual">Sua posição atual no Ranking:</th>
-          <td colspan="3" class="posicao_atual">40</td>
-        </tr>
-      </tbody>
+     
+   <tbody class="text-white">
+
+          <?php
+          $count = 1;
+          $result_msg = "SELECT * FROM ranking ORDER BY pontuacao_usu DESC LIMIT 10";
+          $test =  $conn->prepare($result_msg);
+          $test->execute();
+          while ($row_msg_cont = $test->fetch(PDO::FETCH_ASSOC)){
+          ?>
+                  <tr>
+                      <th scope="row"><?php echo $count; ?></th>
+                      <td><?php echo $row_msg_cont['username_usu'].'<br>'; ?></td>
+                      <td><?php echo $row_msg_cont['pontuacao_usu'].'<br>'; ?></td>
+                      <td><?php echo $row_msg_cont['nivel_atingido'].'<br>'; ?></td>
+                  </tr>
+            
+                 
+
+          <?php
+           $count++;
+          }     
+          ?>      
+    </tbody>
+
     </table>
   </main>
 
