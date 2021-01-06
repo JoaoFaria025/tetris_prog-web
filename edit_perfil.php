@@ -14,7 +14,7 @@ $email = filter_input(INPUT_POST,'email',FILTER_SANITIZE_STRING);
 $username = filter_input(INPUT_POST,'username',FILTER_SANITIZE_STRING);
 $senha = filter_input(INPUT_POST,'senha',FILTER_SANITIZE_STRING);
 
-
+//fazendo update na tabela usuario
 $result = "UPDATE usuario SET nome=:nome,data_nasc=:dtnasc,CPF=:cpf,telefone=:telefone,email=:email,username=:username,senha=:senha WHERE id_usuario = '".$_SESSION['id_usuario']."'";
 
     
