@@ -28,7 +28,8 @@ var valor_tab_atual =0;
 var audio_game_over = document.getElementById('audio');
 var audio_inicio_game = document.getElementById('inicio_game');
 var audio_line = document.getElementById('linha_eliminada');
-
+var dificuldade;
+var format;
 // ----------- Classe PECAS------------
 
 class Pecas{
@@ -193,29 +194,36 @@ function speed_peca_tab_pequeno(){
     if(score>=300){
         speed_peca = 200;
         document.getElementById("dificuldade").innerHTML="Normal"
+        dificuldade = "Normal";
+
     }
     if(score>=600){
         speed_peca = 100;
         document.getElementById("dificuldade").innerHTML="Difícil"
+        dificuldade = "Difícil";
     }
     if(score>=1200){
         speed_peca= 80;
         document.getElementById("dificuldade").innerHTML="Expert"
-    }
+        dificuldade = "Difícil";
+    }w
 }
 
 function speed_peca_tab_grande(){
     if(score>=300){
         speed_peca = 100;
         document.getElementById("dificuldade").innerHTML="Normal"
+        dificuldade = "Normal";
     }
     if(score>=600){
         speed_peca = 70;
         document.getElementById("dificuldade").innerHTML="Difícil"
+        dificuldade = "Difícil";
     }
     if(score>=1200){
         speed_peca= 50;
         document.getElementById("dificuldade").innerHTML="Expert"
+        dificuldade = "Expert";
     }
 }
 
@@ -456,7 +464,7 @@ function timer(){
 //Cria uma variável com o valor tratado MM:SS
 //No operador ternário se minutes < 10 então format recebe '0' + minutes senão só exibe os minutes
 //No operador ternário se seconds < 10 então format recebe '0' + seconds senão só exibe os seconds
-var format = (minutes< 10 ? '0' + minutes: minutes) + ':' + (seconds< 10 ? '0' + seconds: seconds);
+format = (minutes< 10 ? '0' + minutes: minutes) + ':' + (seconds< 10 ? '0' + seconds: seconds);
 
 //Insere o valor tratado no elemento counter
 document.getElementById('tempo').innerText = format;
@@ -485,6 +493,16 @@ function gameOver() {
     pause_inicio_game();
     play_game_over();
     abreModalGame_Over();
+    /*ENVIA PRO PHP DADOS GAME */
+    var http = new XMLHttpRequest();
+    var url = "cad_ranking.php";
+    var dadosGame = new FormData();
+    dadosGame.append("score",score);
+    dadosGame.append("Linhas",format);
+    dadosGame.append("Linhas",qtdLinhas);
+    dadosGame.append("dificuldade",dificuldade);
+    http.open("POST",url,true);
+    http.send(dadosgame);
 }
 
 function abreModalGame_Over() {
@@ -497,6 +515,7 @@ function resetGame() {
     stopTimer();
     speed_peca = 400;
     document.getElementById("dificuldade").innerHTML="Fácil"
+    dificuldade = "Fácil";
     canMove = true;
     dropStart = Date.now();
     score = 0;
