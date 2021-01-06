@@ -12,15 +12,19 @@ $conn  = $player->getConexao();
         header("location: index.php"); //redireciona para a pagina de login
         exit;
     } 
-    $sql = "SELECT * FROM usuario WHERE id_usuario = '".$_SESSION['id_usuario']."'";
+    $sql = "SELECT * FROM usuario WHERE id_usuario = '".$_SESSION['id_usuario']."'";//exibe usuario de acordo com o ID dele
     $resultado = $conn->prepare($sql);
     $resultado->execute();
     $row = $resultado->fetch(PDO::FETCH_ASSOC);
+
+    //$gameOver = "<script>document.write(gameOverStatus)</script>";
+
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -48,7 +52,7 @@ $conn  = $player->getConexao();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
         integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous">
     </script>
-    
+    <script type="text/javascript" src="jquery-1.10.1.js"></script>
     <title>Rooling Tetris</title>
 </head>
 <body style="background-color: #000000;">
@@ -116,7 +120,7 @@ $conn  = $player->getConexao();
                         <div class="forms">
                             <div class="form-group">
                                 <label class="form-label" for="name"><b>Nome:</b></label>
-                                <input type="text" class="form-control" id="name" name="name" value="<?php if(isset($row['id_usuario'])){ echo $row['nome']; }?>">
+                                <input type="text" class="form-control" id="name" name="nome" value="<?php if(isset($row['id_usuario'])){ echo $row['nome']; }?>">
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="email"><b>Data de nascimento:</b></label>
@@ -226,4 +230,6 @@ $conn  = $player->getConexao();
             </div>
     
 </body>
+
+
 </html>
