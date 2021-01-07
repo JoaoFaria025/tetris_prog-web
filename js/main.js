@@ -172,14 +172,14 @@ function pecas_aleatorias(){
 
 function Movimentation() {
     //Movimentação da peça!!
-   
+    if(!gameOver_state){
     const now = Date.now();
     const delta = now - dropStart; //Hora do frame atual do usuario - a hora que a peça comecou a cair.
     if (delta >= speed_peca) {  //Se passou os 500ms.(Para ajustar a velo do jogo.)
         moveDown();
         dropStart = Date.now();//Atualizar o frame atual do usuário.
     }
-    if(!gameOver_state){
+    
         requestAnimationFrame(Movimentation);
         if(tamPecas == 20){
             speed_peca_tab_pequeno();
@@ -314,8 +314,11 @@ Pecas.prototype.rodar = function(){
 document.onkeydown = function (e) {
     if(!canMove){
         return false;
+        
     }
+    else{
     switch (e.key) {
+        
         case 'ArrowUp':
             tetrominoes_obj.rodar();
             break;
@@ -328,6 +331,7 @@ document.onkeydown = function (e) {
         case 'ArrowRight':
             moveRight();
         }
+    }
 };
 
 // ----------- Funcao para checar a colisao das peças ------------
@@ -489,6 +493,7 @@ function reiniciar_jogo(){
 
 function gameOver() {
     gameOver_state = true
+    canMove = false;
     pause_inicio_game();
     play_game_over();
     abreModalGame_Over();
