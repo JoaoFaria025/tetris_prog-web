@@ -15,9 +15,7 @@ $conn  = $player->getConexao();
     $sql = "SELECT * FROM usuario WHERE id_usuario = '".$_SESSION['id_usuario']."'";//exibe usuario de acordo com o ID dele
     $resultado = $conn->prepare($sql);
     $resultado->execute();
-    $row = $resultado->fetch(PDO::FETCH_ASSOC);
-
-    //$gameOver = "<script>document.write(gameOverStatus)</script>";
+    $row = $resultado->fetch(PDO::FETCH_ASSOC);//imprimir o nome da coluna atraves do fetch e row recebe esse valor
 
 ?>
 
