@@ -222,7 +222,7 @@ $conn  = $player->getConexao();
                     <h5 class="modal-title" id="exampleModalLongTitle">Game over! Deseja Jogar Novamente?</h5>
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-success"  onclick="jogar_again_game_over()" data-dismiss="modal"> Jogar novamente</button> 
+                <button type="button" class="btn btn-success"  onclick="reiniciar_jogo()" data-dismiss="modal"> Jogar novamente</button> 
                     <button type="button" class="btn btn-danger" onclick="reiniciar_jogo()">Cancelar e voltar ao menu.</button>
                 </div>
                 </div>

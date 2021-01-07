@@ -1,8 +1,18 @@
 <?php
 //conexão bd - tetris_bd
 require_once 'conexao.php';
-$player = new conexao();
-$conn  = $player->getConexao();
+$conexao = new conexao();
+$conn  = $conexao->getConexao();
+
+function Username_atual(){
+    $codigo_usuario = $_SESSION['id_usuario']; //id_usuario DO USUÁRIO
+       $cst = $GLOBALS['$conn']->prepare("SELECT * from usuario WHERE id_usuario=:usu_id");
+       $cst->bindParam(":usu_id", $codigo_usuario, PDO::PARAM_INT);
+       $cst->execute();
+       $resultado = $cst->fetch(); // SALVA OS DADOS DO BD NA FORMA DE UM ARRAY.
+       $_SESSION['username'] = $resultado['username'];   
+}
+
 ?>
 
 
@@ -60,11 +70,15 @@ $conn  = $player->getConexao();
         $sql = $conn->prepare($q);
         $sql->bindValue(":user",$username); //substitui pelo username que veio como parametro
         $sql->bindValue(":s",$senha); //substitui pela senha que veio como parametro
+
         if($sql->execute()){
             if($sql->rowCount() == 1){
                 $info = $sql->fetch(); //recebe os dados e transforma em um array
+                
                 session_start(); //criar uma sessao
                 $_SESSION['id_usuario'] = $info['id_usuario']; //id do usuario logado esta armazenado em uma sessao  
+                $_SESSION['username'] = $info['username'];   
+
                 header('Location: rt.php'); //acesso ao sistema (area privada)
                 exit();
             }
@@ -82,3 +96,4 @@ $conn  = $player->getConexao();
 </body>
   
 </html>
+

@@ -172,14 +172,14 @@ function pecas_aleatorias(){
 
 function Movimentation() {
     //Movimentação da peça!!
-    if(!gameOver_state){
+   
     const now = Date.now();
     const delta = now - dropStart; //Hora do frame atual do usuario - a hora que a peça comecou a cair.
     if (delta >= speed_peca) {  //Se passou os 500ms.(Para ajustar a velo do jogo.)
         moveDown();
         dropStart = Date.now();//Atualizar o frame atual do usuário.
     }
-    
+    if(!gameOver_state){
         requestAnimationFrame(Movimentation);
         if(tamPecas == 20){
             speed_peca_tab_pequeno();
@@ -482,43 +482,34 @@ return format;
 
 // ----------- Reiniciar Game  ------------
 
-function restartGame(valor){
-    start_game(valor);//função que solicita ao usuário possível reinicialização do game
-}
-
 function reiniciar_jogo(){
     window.location.reload(true);
 
 }
 
-function jogar_again_game_over(){
-   
-    restartGame(valor_tab_atual);
-    resetGame();
-    
-}
-
 function gameOver() {
-    //alert('aa');
     gameOver_state = true
     pause_inicio_game();
     play_game_over();
     abreModalGame_Over();
     stopTimer();
+    Salvar_Dados_Ajax()
+    
+}
+
+
+function Salvar_Dados_Ajax(){
     /*ENVIA PRO PHP DADOS GAME */
     var formData = new FormData();
     formData.append("score", score);
     formData.append("dificuldade", dificuldade);
     formData.append("tempo_partida", seconds);
     var http = new XMLHttpRequest();
-    var url = "dom.php";  
+    var url = "cad_ranking.php";  
     http.open("POST", url, true);
     http.send(formData);
-    
+
 }
-
-
-
 function abreModalGame_Over() {
     $("#game_over").modal({
       show: true

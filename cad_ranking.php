@@ -1,31 +1,21 @@
 <?php
-//conexão bd - tetris_bd
-include_once 'conexao.php';
-$player = new conexao();
-$conn  = $player->getConexao();
+session_start();
+ if (isset($_POST)){
 
-$pontuacao_usu = filter_input(INPUT_POST,'nome',FILTER_SANITIZE_STRING);
-$nivel_atingido = filter_input(INPUT_POST,'dtnasc',FILTER_SANITIZE_STRING);
-$tempo_partida = filter_input(INPUT_POST,'cpf',FILTER_SANITIZE_STRING);
-$username_usu = filter_input(INPUT_POST,'telefone',FILTER_SANITIZE_STRING);
+        require_once 'conexao.php';
+        $conexao= new conexao();
+        $conn  = $conexao->getConexao();
 
-$result = "INSERT INTO ranking (pontuacao_usu,nivel_atingido,tempo_partida,username_usu) 
-  VALUES (:pont,:nivel,:tempo,:user)";
-  
-$insert = $conn->prepare($result);
-$insert->bindParam(':pont', $pont);
-$insert->bindParam(':nivel', $nivel);
-$insert->bindParam(':tempo', $tempo);
-$insert->bindParam(':user', $user);
+        $jogador_atual = $_SESSION['username'] ;
 
+        $score = $_POST['score'];
+        $dificuldade = $_POST['dificuldade'];
+        $tempo_partida = $_POST['tempo_partida'];
 
-if($insert->execute()){
-    echo("foi");
-    header("Location: index.php");
+        $cst = $conn->prepare("INSERT INTO ranking (id_ranking, pontuacao_usu, nivel_atingido, tempo_partida, username_usu) VALUES (NULL, '$score', '$dificuldade', '$tempo_partida', '$jogador_atual')");
+        $cst->execute();
+
 }
 else{
-echo("n foi");
+   echo 'aa';
 }
-
-
-?>

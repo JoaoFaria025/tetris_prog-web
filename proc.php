@@ -1,8 +1,8 @@
 <?php
 //conexão bd - tetris_bd
 include_once 'conexao.php';
-$player = new conexao();
-$conn  = $player->getConexao();
+$conexao = new conexao();
+$conn  = $conexao->getConexao();
 
 $nome = filter_input(INPUT_POST,'nome',FILTER_SANITIZE_STRING);
 $dtnasc = filter_input(INPUT_POST,'dtnasc',FILTER_SANITIZE_STRING);

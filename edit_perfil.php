@@ -1,8 +1,8 @@
 <?php
 //conexão bd - tetris_bd
 include_once 'conexao.php';
-$player = new conexao();
-$conn  = $player->getConexao();
+$conexao = new conexao();
+$conn  = $conexao->getConexao();
 
 session_start(); //abrir a sessao
 
