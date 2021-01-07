@@ -1,0 +1,6 @@
+1. Execute a pagina php database.php no servidor do localhost
+    Exemplo: http://localhost/tetris_prog-web/database.php
+ATENÇÃO: O a paste tetris_prog-web, que contém todas as páginas .php deverá estar contida na pasta HTDOCS do xamp.
+
+2. Ao aparecer a mensagem "DB criado com sucesso", feche a página e abra a de login para utilização do sistema.
+    Exemplo: http://localhost/tetris_prog-web/index.php
