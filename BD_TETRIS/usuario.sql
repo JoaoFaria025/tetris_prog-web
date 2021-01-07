@@ -16,7 +16,7 @@ CREATE TABLE `usuario` (
 CREATE TABLE `ranking` (
   `id_ranking` int(1) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `pontuacao_usu` integer(100) NOT NULL,
-  `nivel_atingido` integer(14) NOT NULL,
+  `nivel_atingido` varchar(30) NOT NULL,
   `tempo_partida` integer(20) NOT NULL,
   `username_usu` varchar(200) NOT NULL,
   foreign key (username_usu) references usuario(username)

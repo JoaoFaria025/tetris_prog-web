@@ -16,7 +16,7 @@ var N_COL = 0;
 var tabuleiro = [];
 let speed_peca= 400;
 let dropStart = Date.now();//Frame atual do usuário inicial.
-let score = 0;
+let score = 32;
 let count_line = 0;
 var minutes = 0;
 var seconds = 0;
@@ -28,10 +28,11 @@ var valor_tab_atual =0;
 var audio_game_over = document.getElementById('audio');
 var audio_inicio_game = document.getElementById('inicio_game');
 var audio_line = document.getElementById('linha_eliminada');
-var dificuldade;
+var dificuldade = "Facil";
 var format;
+//Verifica o Game Over
+let gameOver_state = false;
 // ----------- Classe PECAS------------
-
 class Pecas{
     constructor(peca,color){ 
         this.peca = peca;
@@ -101,6 +102,7 @@ function choice(valor){
 }
 
 function start_game(valor){
+    gameOver_state = false;
     valor_tab_atual = valor;
     choice(valor);
     layoutTetris();
@@ -170,14 +172,14 @@ function pecas_aleatorias(){
 
 function Movimentation() {
     //Movimentação da peça!!
-    let gameOver = false;
+    if(!gameOver_state){
     const now = Date.now();
     const delta = now - dropStart; //Hora do frame atual do usuario - a hora que a peça comecou a cair.
     if (delta >= speed_peca) {  //Se passou os 500ms.(Para ajustar a velo do jogo.)
         moveDown();
         dropStart = Date.now();//Atualizar o frame atual do usuário.
     }
-    if(!gameOver){
+    
         requestAnimationFrame(Movimentation);
         if(tamPecas == 20){
             speed_peca_tab_pequeno();
@@ -194,36 +196,36 @@ function speed_peca_tab_pequeno(){
     if(score>=300){
         speed_peca = 200;
         document.getElementById("dificuldade").innerHTML="Normal"
-        dificuldade = "Normal";
+        dificuldade = "1";
 
     }
     if(score>=600){
         speed_peca = 100;
         document.getElementById("dificuldade").innerHTML="Difícil"
-        dificuldade = "Difícil";
+        dificuldade = "1";
     }
     if(score>=1200){
         speed_peca= 80;
         document.getElementById("dificuldade").innerHTML="Expert"
-        dificuldade = "Difícil";
-    }w
+        dificuldade = "1";
+    }
 }
 
 function speed_peca_tab_grande(){
     if(score>=300){
         speed_peca = 100;
         document.getElementById("dificuldade").innerHTML="Normal"
-        dificuldade = "Normal";
+        dificuldade = "1";
     }
     if(score>=600){
         speed_peca = 70;
         document.getElementById("dificuldade").innerHTML="Difícil"
-        dificuldade = "Difícil";
+        dificuldade = "1";
     }
     if(score>=1200){
         speed_peca= 50;
         document.getElementById("dificuldade").innerHTML="Expert"
-        dificuldade = "Expert";
+        dificuldade = "1";
     }
 }
 
@@ -364,7 +366,7 @@ function CheckCollision(row, col, futurePiece) {
 }
 
 // ----------- Travar as peças quando colidir ------------
-
+var count =0;
 function lock(){
     canMove = false;
     for(var linha = 0; linha < tetrominoes_obj.activePeca.length; linha++){
@@ -375,13 +377,17 @@ function lock(){
             }
             else if(tetrominoes_obj.y_board + linha < 0){
                 //Se estiver acima do quadro, é pq deu gameover. (ROLLING TETRIS MUDAR!!).
+               // alert('zz');
               gameOver();
+              count = 2;
                 break;
-              
             }
             else{
             tabuleiro[tetrominoes_obj.y_board + linha][tetrominoes_obj.x_board + coluna]  = tetrominoes_obj.color;
             }
+        }
+        if (count ==2){
+            break;
         }
     }
     verificarLinha();
@@ -482,28 +488,36 @@ function restartGame(valor){
 
 function reiniciar_jogo(){
     window.location.reload(true);
+
 }
 
 function jogar_again_game_over(){
+   
     restartGame(valor_tab_atual);
     resetGame();
+    
 }
 
 function gameOver() {
+    //alert('aa');
+    gameOver_state = true
     pause_inicio_game();
     play_game_over();
     abreModalGame_Over();
+    stopTimer();
     /*ENVIA PRO PHP DADOS GAME */
+    var formData = new FormData();
+    formData.append("score", score);
+    formData.append("dificuldade", dificuldade);
+    formData.append("tempo_partida", seconds);
     var http = new XMLHttpRequest();
-    var url = "cad_ranking.php";
-    var dadosGame = new FormData();
-    dadosGame.append("score",score);
-    dadosGame.append("Linhas",format);
-    dadosGame.append("Linhas",qtdLinhas);
-    dadosGame.append("dificuldade",dificuldade);
-    http.open("POST",url,true);
-    http.send(dadosgame);
+    var url = "dom.php";  
+    http.open("POST", url, true);
+    http.send(formData);
+    
 }
+
+
 
 function abreModalGame_Over() {
     $("#game_over").modal({
@@ -515,7 +529,7 @@ function resetGame() {
     stopTimer();
     speed_peca = 400;
     document.getElementById("dificuldade").innerHTML="Fácil"
-    dificuldade = "Fácil";
+    dificuldade = "1";
     canMove = true;
     dropStart = Date.now();
     score = 0;

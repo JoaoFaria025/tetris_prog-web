@@ -64,8 +64,7 @@ $conn  = $player->getConexao();
             if($sql->rowCount() == 1){
                 $info = $sql->fetch(); //recebe os dados e transforma em um array
                 session_start(); //criar uma sessao
-                $_SESSION['id_usuario'] = $info['id_usuario']; //id do usuario logado esta armazenado em uma sessao
-                $_SESSION['aaaa'] = $resultado['username'];   
+                $_SESSION['id_usuario'] = $info['id_usuario']; //id do usuario logado esta armazenado em uma sessao  
                 header('Location: rt.php'); //acesso ao sistema (area privada)
                 exit();
             }
