@@ -1,9 +1,10 @@
 <?php
 
+echo '<br>';
 try {
-     $host = "localhost";;
-     $user = "root";
-     $password = "";
+     $host = $_POST['host'];
+     $user = $_POST['user'];
+     $password = $_POST['password'];
      $database =  "tetris_bd";
 
     $conn = new PDO("mysql:host=$host;", $user, $password);

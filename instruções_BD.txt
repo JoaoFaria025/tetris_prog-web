@@ -1,6 +1,15 @@
-1. Execute a pagina php database.php no servidor do localhost
-    Exemplo: http://localhost/tetris_prog-web/database.php
+1. Primeiramente, execute a pagina html  "database_insert.html" no servidor do localhost
+    Exemplo: http://localhost/tetris_prog-web/database_insert.html
+
+2. Insira os dados conforme o seu gerenciador de banco de dados, geralmente os valores padrões são aqueles
+escritos no próprio formulário. Para host, localhost. Para user, root. Para password, "" (vazio, sem caracteres).
+
+3. Se tudo ocorrer bem você será direcionado para a pagina database.php, onde ela cadastrará a database em seu gerenciador.
+
+
+4. Ao aparecer a mensagem "DB criado com sucesso", feche a página e abra a de login para utilização do sistema.
+    Exemplo: http://localhost/tetris_prog-web/index.php
+
 ATENÇÃO: O a paste tetris_prog-web, que contém todas as páginas .php deverá estar contida na pasta HTDOCS do xamp.
 
-2. Ao aparecer a mensagem "DB criado com sucesso", feche a página e abra a de login para utilização do sistema.
-    Exemplo: http://localhost/tetris_prog-web/index.php
+Bom jogo!!
