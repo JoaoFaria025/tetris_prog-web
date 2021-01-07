@@ -210,22 +210,20 @@ if (!isset($_SESSION['id_usuario'])) { //verificar se o usuario esta logado
   </footer>
 
   <!-- Modal SAIR -->
-  <div class="modal fade" id="sair_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Deseja sair?</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-            <span aria-hidden="true">&times;</span>
-          </button>
+  <div class="modal fade" id="sair_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header  bg-danger  ">
+                    <h5 class="modal-title text-light" id="exampleModalLabel">Deseja sair?</h5>
+                </div>
+                <div class="modal-footer">
+                <a  class="btn btn-success" href="logoff.php"> Confirmar</a>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-          <a class="btn btn-success" href="logoff.php"> Confirmar</a>
-        </div>
-      </div>
     </div>
-  </div>
 </body>
 
 </html>
