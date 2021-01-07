@@ -50,7 +50,6 @@ $conn  = $player->getConexao();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
         integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous">
     </script>
-    <script type="text/javascript" src="jquery-1.10.1.js"></script>
     <title>Rooling Tetris</title>
 </head>
 <body style="background-color: #000000;">
@@ -122,11 +121,11 @@ $conn  = $player->getConexao();
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="email"><b>Data de nascimento:</b></label>
-                                <input  type="text" class="form-control" id="dtnasc" name="dtnasc" readonly="true" value="<?php if(isset($row['id_usuario'])){ echo $row['data_nasc']; }?>">
+                                <input  type="text" class="form-control" id="dtnasc" name="dtnasc"  value="<?php if(isset($row['id_usuario'])){ echo $row['data_nasc']; }?>">
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="name"><b>CPF:</b></label>
-                                <input  type="text" class="form-control" id="cpf" name="cpf" readonly="true" value="<?php if(isset($row['id_usuario'])){ echo $row['CPF']; }?>">
+                                <input  type="text" class="form-control" id="cpf" name="cpf"  value="<?php if(isset($row['id_usuario'])){ echo $row['CPF']; }?>">
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="name"><b>Telefone:</b></label>
@@ -138,7 +137,7 @@ $conn  = $player->getConexao();
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="name"><b>Username:</b></label>
-                                <input  type="text" class="form-control" id="username" name="username" readonly="true" value="<?php if(isset($row['id_usuario'])){ echo $row['username']; }?>">
+                                <input  type="text" class="form-control" id="username" name="username"  value="<?php if(isset($row['id_usuario'])){ echo $row['username']; }?>">
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="email"><b>Senha:</b></label>
