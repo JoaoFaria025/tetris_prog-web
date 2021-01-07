@@ -313,8 +313,7 @@ Pecas.prototype.rodar = function(){
     
 document.onkeydown = function (e) {
     if(!canMove){
-        return false;
-        
+        return false;   
     }
     else{
     switch (e.key) {
